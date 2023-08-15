@@ -1166,7 +1166,7 @@ def refresh_sky(i):
     fig.canvas.flush_events()
     #fig.savefig('Hokoon_ASIM_'+str("{:%Y_%m_%d-%H_%M_%S}".format(datetime.now()))+'.png')
     #plt.savefig('Hokoon_ASIM_'+str("{:%Y_%m_%d-%H_%M_%S}".format(datetime.now()))+'.png')
-    plt.savefig('Hokoon_ASC.png')
+    plt.savefig('output/Hokoon_ASC.png')
     
     # upload to Dropbox
     # cfg_path = r'/home/pi/.config/rclone/rclone.conf'

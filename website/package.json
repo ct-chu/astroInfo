@@ -1,0 +1,32 @@
+{
+  "name": "astro-info",
+  "version": "1.0.0",
+  "private": true,
+  "description": "astro-info",
+  "author": "ctchu",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.5",
+    "gatsby": "^5.11.0",
+    "gatsby-plugin-material-ui": "^4.0.2",
+    "gatsby-plugin-react-i18next": "^3.0.1",
+    "gatsby-source-filesystem": "^5.11.0",
+    "i18next": "^22.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.3.1"
+  }
+}
