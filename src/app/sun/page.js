@@ -3,16 +3,6 @@
 import * as React from "react";
 import { Grid, ImageList, ImageListItem, Typography, Box } from "@mui/material";
 
-export const metadata = {
-  appleWebApp: {
-    title: '可觀天文',
-    statusBarStyle: 'black-translucent',
-    startupImage: [
-      "/cover.jpg",
-    ],
-  },
-};
-
 export default function Sun() {
   const sunSdoLink =
     "https://services.swpc.noaa.gov/images/animations/sdo-hmii/latest.jpg";
