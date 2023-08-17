@@ -3,9 +3,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import {
-  Card,
-  CardMedia,
-  CardContent,
   Typography,
   Grid,
   Button,
@@ -18,14 +15,9 @@ import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import axios from "axios";
 
-// function useForceUpdate() {
-//   const [value, setValue] = useState(0);
-//   return () => setValue((value) => value + 1);
-// }
-
 export default function Home() {
   const [open, setOpen] = useState(false);
-  const [weatherData, setWeatherData] = useState("");
+  const [weatherData, setWeatherData] = useState([]);
   const [error, setError] = useState(false);
   const [state, setState] = useState("");
   const [updateTime, setUpdateTime] = useState("");
@@ -69,11 +61,12 @@ export default function Home() {
       .then((res) => {
         setState("success");
         setUpdateTime(new Date().toLocaleString());
+        let uvDescription = (typeof res.data.uvindex.data === "undefined") ? "N/A" : res.data.uvindex.data[0].desc
         setWeatherData([
           `https://www.hko.gov.hk/images/HKOWxIconOutline/pic${res.data.icon[0]}.png`,
           res.data.temperature.data[14].value,
           res.data.humidity.data[0].value,
-          res.data.uvindex.data[0].desc,
+          uvDescription,
         ]);
       })
       .catch((err) => {
@@ -86,14 +79,14 @@ export default function Home() {
 
   const WeatherCard = () => {
     return (
-      <CardContent sx={{ flex: "1 0 auto", width: 1 }}>
         <Grid
           container
           direction="row"
           alignItems="stretch"
           justifyContent="space-around"
+          sx={{width: 1}}
         >
-          <Grid item>
+          <Grid item xs={10}>
             <Typography component="div" variant="content">
               Air temp: {weatherData[1]} °C
             </Typography>
@@ -109,30 +102,28 @@ export default function Home() {
             </Typography>
           </Grid>
           <Grid item xs={2}>
-            <CardMedia
-              component="img"
-              sx={{ width: 1 }}
-              image={weatherData[0]}
+            <img
+              style={{maxWidth:80}}
+              src={weatherData[0]}
               alt="Current weather"
             />
           </Grid>
         </Grid>
-      </CardContent>
     );
   };
 
   return (
     <>
-      <Grid container direction="column" alignItems="center" spacing={2}>
-        <Grid item sx={{ width: 1 }}>
-          <Card sx={{ width: 1 }}>
-            <CardContent>
+      <Grid container direction="column" alignItems="center" spacing={2} xs={12} md={8} lg={8}>
+      <Box sx={{ height: "2rem" }} />
+        <Grid item sx={{ width: 0.85 }}>
+
               <Typography variant="sectionTitle">
-                天氣報告 Current Weather Info
+                天氣報告 Current Weather Info<br /><br />
               </Typography>
-            </CardContent>
+
             {state === "loading" ? <h1>Loading...</h1> : <WeatherCard />}
-          </Card>
+
         </Grid>
 
         <Grid item sx={{ width: 0.85 }}>
@@ -151,18 +142,24 @@ export default function Home() {
             Press the Ho Koon all-sky image to magnify
             <br />
           </Typography>
-          <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageList sx={{ width: 1 }} cols={1}>
             <ImageListItem>
               <img src={hokoonAscLink} onClick={() => setOpen(true)} />
             </ImageListItem>
           </ImageList>
           <Box sx={{ height: "2rem" }} />
-          <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageList
+            sx={{
+              gridTemplateColumns:
+                'repeat(auto-fill, minmax(360px, 2fr))!important',
+            }}
+            gap={50}
+          >
             {ascList.map((image) => (
               <ImageListItem key={image.url}>
                 <Typography variant="content">
                   {image.site}
-                  <br />
+                  <br /><br />
                 </Typography>
                 <img src={image.url} alt={image.site} loading="lazy" />
               </ImageListItem>

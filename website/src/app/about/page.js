@@ -44,7 +44,7 @@ export default function About() {
             <br />
           </Typography>
         </Grid>
-        <Box sx={{ height: "2rem" }} />
+        <Box sx={{ height: "20rem" }} />
       </Grid>
 
       {/* <AddToHomeScreen /> */}

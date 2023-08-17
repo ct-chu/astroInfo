@@ -58,16 +58,16 @@ const themeDark = createTheme({
       body: "Noto",
     },
     button: {
-      fontSize: "13px",
+      fontSize: "16px",
     },
     sectionTitle: {
-      fontSize: "18px",
+      fontSize: "19px",
     },
     content: {
-      fontSize: "13px",
+      fontSize: "16px",
     },
     small: {
-      fontSize: "11px",
+      fontSize: "14px",
       color: "grey",
     },
   },

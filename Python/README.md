@@ -1,1 +1,0 @@
-Originally written by Thomas K. T. Fok (HKNEAC)
