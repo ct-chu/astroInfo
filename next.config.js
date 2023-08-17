@@ -13,8 +13,16 @@ const nextConfig = {
     // Optional: Change the output directory `out` -> `dist`
     // distDir: 'dist',
   }
+
+  const withPWA = require('next-pwa')({
+    dest: 'public',
+  })
    
   module.exports = nextConfig
+
+  module.exports = withPWA({
+    // next.js config
+  })
 
 // const isGithubActions = process.env.GITHUB_ACTIONS || false
 

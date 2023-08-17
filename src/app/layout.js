@@ -11,7 +11,7 @@ const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
 export const metadata = {
   title: "可觀天文資訊",
   description: "Realtime info for astronomical observation, provided by HKNEAC",
-  // manifest: './manifest.json',
+  manifest: '/manifest.json',
   appleWebApp: {
     title: '可觀天文',
     statusBarStyle: 'black-translucent',
