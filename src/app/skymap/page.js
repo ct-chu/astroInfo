@@ -16,7 +16,15 @@ export default function Skymap() {
   const [lightboxURL, setLightboxURL] = useState(skymapLink);
 
   return (
-    <Grid container direction="column" alignItems="center">
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      xs={12}
+      sm={10}
+      md={8}
+      lg={6}
+    >
       <Box sx={{ height: "2rem" }} />
 
       <Grid item sx={{ width: 0.85 }}>

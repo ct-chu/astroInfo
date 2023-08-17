@@ -61,7 +61,10 @@ export default function Home() {
       .then((res) => {
         setState("success");
         setUpdateTime(new Date().toLocaleString());
-        let uvDescription = (typeof res.data.uvindex.data === "undefined") ? "N/A" : res.data.uvindex.data[0].desc
+        let uvDescription =
+          typeof res.data.uvindex.data === "undefined"
+            ? "N/A"
+            : res.data.uvindex.data[0].desc;
         setWeatherData([
           `https://www.hko.gov.hk/images/HKOWxIconOutline/pic${res.data.icon[0]}.png`,
           res.data.temperature.data[14].value,
@@ -79,51 +82,60 @@ export default function Home() {
 
   const WeatherCard = () => {
     return (
-        <Grid
-          container
-          direction="row"
-          alignItems="stretch"
-          justifyContent="space-around"
-          sx={{width: 1}}
-        >
-          <Grid item xs={10}>
-            <Typography component="div" variant="content">
-              Air temp: {weatherData[1]} °C
-            </Typography>
-            <Typography component="div" variant="content">
-              Humidity: {weatherData[2]} %
-            </Typography>
-            <Typography component="div" variant="content">
-              UV intensity: {weatherData[3]} <br /> <br />
-            </Typography>
-            <Typography component="div" variant="small">
-              Last updated time: {updateTime.substring(0, 9)}{" "}
-              {updateTime.substring(11, 21)}
-            </Typography>
-          </Grid>
-          <Grid item xs={2}>
-            <img
-              style={{maxWidth:80}}
-              src={weatherData[0]}
-              alt="Current weather"
-            />
-          </Grid>
+      <Grid
+        container
+        direction="row"
+        alignItems="stretch"
+        justifyContent="space-around"
+        sx={{ width: 1 }}
+      >
+        <Grid item xs={10}>
+          <Typography component="div" variant="content">
+            Air temp: {weatherData[1]} °C
+          </Typography>
+          <Typography component="div" variant="content">
+            Humidity: {weatherData[2]} %
+          </Typography>
+          <Typography component="div" variant="content">
+            UV intensity: {weatherData[3]} <br /> <br />
+          </Typography>
+          <Typography component="div" variant="small">
+            Last updated time: {updateTime.substring(0, 9)}{" "}
+            {updateTime.substring(11, 21)}
+          </Typography>
         </Grid>
+        <Grid item xs={2}>
+          <img
+            style={{ maxWidth: 80 }}
+            src={weatherData[0]}
+            alt="Current weather"
+          />
+        </Grid>
+      </Grid>
     );
   };
 
   return (
     <>
-      <Grid container direction="column" alignItems="center" spacing={2} xs={12} md={8} lg={8}>
-      <Box sx={{ height: "2rem" }} />
+      <Grid
+        container
+        direction="column"
+        alignItems="center"
+        spacing={2}
+        xs={12}
+        sm={10}
+        md={8}
+        lg={6}
+      >
+        <Box sx={{ height: "2rem" }} />
         <Grid item sx={{ width: 0.85 }}>
+          <Typography variant="sectionTitle">
+            天氣報告 Current Weather Info
+            <br />
+            <br />
+          </Typography>
 
-              <Typography variant="sectionTitle">
-                天氣報告 Current Weather Info<br /><br />
-              </Typography>
-
-            {state === "loading" ? <h1>Loading...</h1> : <WeatherCard />}
-
+          {state === "loading" ? <h1>Loading...</h1> : <WeatherCard />}
         </Grid>
 
         <Grid item sx={{ width: 0.85 }}>
@@ -151,7 +163,7 @@ export default function Home() {
           <ImageList
             sx={{
               gridTemplateColumns:
-                'repeat(auto-fill, minmax(360px, 2fr))!important',
+                "repeat(auto-fill, minmax(280px, 1fr))!important",
             }}
             gap={50}
           >
@@ -159,7 +171,8 @@ export default function Home() {
               <ImageListItem key={image.url}>
                 <Typography variant="content">
                   {image.site}
-                  <br /><br />
+                  <br />
+                  <br />
                 </Typography>
                 <img src={image.url} alt={image.site} loading="lazy" />
               </ImageListItem>

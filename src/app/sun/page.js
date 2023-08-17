@@ -8,7 +8,16 @@ export default function Sun() {
     "https://services.swpc.noaa.gov/images/animations/sdo-hmii/latest.jpg";
 
   return (
-    <Grid container direction="column" alignItems="center">
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      spacing={2}
+      xs={12}
+      sm={10}
+      md={8}
+      lg={6}
+    >
       <Grid item sx={{ width: 0.85 }}>
         <Box sx={{ height: "2rem" }} />
         <Typography variant="sectionTitle">

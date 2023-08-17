@@ -54,7 +54,7 @@ export default function Menu() {
               >
                 <MenuIcon />
               </IconButton>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Typography variant="sectionTitle" component="div" sx={{ flexGrow: 1 }}>
                 可觀天文資訊
               </Typography>
               {/* <Button color="inherit" variant="small" >紅光模式</Button> */}
