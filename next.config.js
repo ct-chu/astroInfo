@@ -1,25 +1,34 @@
-// next.config.js
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
-    trailingSlash: true,
     output: 'export',
-    }
+   
+    // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
+    // trailingSlash: true,
+   
+    // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
+    // skipTrailingSlashRedirect: true,
+   
+    // Optional: Change the output directory `out` -> `dist`
+    // distDir: 'dist',
+  }
+   
+  module.exports = nextConfig
 
+// const isGithubActions = process.env.GITHUB_ACTIONS || false
 
-const isGithubActions = process.env.GITHUB_ACTIONS || false
+// let assetPrefix = ''
+// let basePath = '/'
 
-let assetPrefix = ''
-let basePath = '/'
+// if (isGithubActions) {
+//   const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
 
-if (isGithubActions) {
-  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, '')
+//   assetPrefix = `/${repo}/`
+//   basePath = `/${repo}`
+// }
 
-  assetPrefix = `/${repo}/`
-  basePath = `/${repo}`
-}
-
-module.exports = nextConfig
-
-module.exports = {
-  assetPrefix: assetPrefix,
-  basePath: basePath,
-}
+// module.exports = {
+//   assetPrefix: assetPrefix,
+//   basePath: basePath,
+// }
