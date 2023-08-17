@@ -21,6 +21,7 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
+  Avatar
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloudIcon from "@mui/icons-material/Cloud";
@@ -49,14 +50,19 @@ export default function Menu() {
                 edge="start"
                 color="inherit"
                 aria-label="menu"
-                sx={{ mr: 2 }}
+                sx={{ mr: 0 }}
                 onClick={() => setIsDrawerOpen(true)}
               >
                 <MenuIcon />
               </IconButton>
+              
               <Typography variant="sectionTitle" component="div" sx={{ flexGrow: 1 }}>
+              
                 可觀天文資訊
               </Typography>
+              <Link href="/" passHref>
+                <Avatar variant="rounded" src={"./apple-icon.png"} />
+                </Link>
               {/* <Button color="inherit" variant="small" >紅光模式</Button> */}
               <Drawer
                 open={isDrawerOpen}

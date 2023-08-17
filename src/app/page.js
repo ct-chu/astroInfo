@@ -82,6 +82,7 @@ export default function Home() {
 
   const WeatherCard = () => {
     return (
+      <>
       <Grid
         container
         direction="row"
@@ -89,7 +90,7 @@ export default function Home() {
         justifyContent="space-around"
         sx={{ width: 1 }}
       >
-        <Grid item xs={10}>
+        <Grid item xs={8}>
           <Typography component="div" variant="content">
             Air temp: {weatherData[1]} °C
           </Typography>
@@ -99,12 +100,8 @@ export default function Home() {
           <Typography component="div" variant="content">
             UV intensity: {weatherData[3]} <br /> <br />
           </Typography>
-          <Typography component="div" variant="small">
-            Last updated time: {updateTime.substring(0, 9)}{" "}
-            {updateTime.substring(11, 21)}
-          </Typography>
         </Grid>
-        <Grid item xs={2}>
+        <Grid item xs={4}>
           <img
             style={{ maxWidth: 80 }}
             src={weatherData[0]}
@@ -112,6 +109,10 @@ export default function Home() {
           />
         </Grid>
       </Grid>
+      <Typography component="div" variant="small">
+      Last updated time: {updateTime}
+    </Typography>
+    </>
     );
   };
 
