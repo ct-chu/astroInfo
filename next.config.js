@@ -16,12 +16,13 @@ const nextConfig = {
 
   const withPWA = require('next-pwa')({
     dest: 'public',
+    output: 'export',
   })
    
   module.exports = nextConfig
 
   module.exports = withPWA({
-    output: 'export',
+    // next.js config
   })
 
 // const isGithubActions = process.env.GITHUB_ACTIONS || false
