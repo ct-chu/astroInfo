@@ -1,15 +1,15 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import localFont from 'next/font/local'
 
 import ThemeDark from  "./styles/themeDark"
 import Menu from "./components/menu"
 
-const inter = Inter({ subsets: ['latin'] })
+const NotoSanstc_R = localFont({ src: './pages/NotoSansTC-Regular.otf' })
 
 export const metadata = {
-  title: 'Astro Info',
+  title: '可觀天文資訊',
   description: 'Realtime info for astronomical observation, provided by HKNEAC',
 }
 
@@ -18,8 +18,17 @@ export default function RootLayout({ children }) {
     <ThemeProvider theme={ThemeDark}>
       
       <html lang="en">
-        
-        <body className={inter.className}>
+        <head>
+          <link rel='icon' href='/favicon.ico'/>
+          <link
+            rel="apple-touch-icon"
+            href="/apple-icon?<generated>"
+            type="image/<generated>"
+            sizes="<generated>"
+          />
+        </head>
+        <body className={NotoSanstc_R.className}>
+          <CssBaseline />
           <Menu />
           {children}
           </body>

@@ -11,6 +11,7 @@ import CloudIcon from '@mui/icons-material/Cloud';
 import NightlightRoundIcon from '@mui/icons-material/NightlightRound';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import InfoIcon from '@mui/icons-material/Info';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
 
 import ThemeDark from "../styles/themeDark"
 
@@ -22,6 +23,7 @@ export default function Menu() {
     <>
     <ThemeProvider theme={ThemeDark}>
       <CssBaseline />
+      <div id="overlay"></div>
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static">
                 <Toolbar>
@@ -36,14 +38,14 @@ export default function Menu() {
                     <MenuIcon />
                 </IconButton>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                    {document.title}
+                    document.title
                 </Typography>
-                <Button color="inherit">紅光模式</Button>
+                {/* <Button color="inherit" variant="small" >紅光模式</Button> */}
                 <Drawer
                     open={isDrawerOpen}
                     PaperProps={{
                         sx: {
-                          backgroundColor: "rgba(30, 30, 30, 0.8)",
+                          backgroundColor: "rgba(30, 30, 30, 0.9)",
                           color: "rgba(255,255,255,1)"
                         }
                       }}
@@ -52,7 +54,7 @@ export default function Menu() {
                 <List>
                     <ListItem key={"天氣"} disablePadding>
                         <Link href="/" passHref>
-                            <ListItemButton>
+                            <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                                 <ListItemIcon>
                                     <CloudIcon />
                                 </ListItemIcon>
@@ -60,9 +62,19 @@ export default function Menu() {
                             </ListItemButton>
                         </Link>
                     </ListItem>
+                    <ListItem key={"太陽"} disablePadding>
+                        <Link href="/sun" passHref>
+                            <ListItemButton onClick={() => setIsDrawerOpen(false)}>
+                                <ListItemIcon>
+                                    <WbSunnyIcon />
+                                </ListItemIcon>
+                            <ListItemText primary="太陽" />
+                            </ListItemButton>
+                        </Link>
+                    </ListItem>
                     <ListItem key={"月球與行星"} disablePadding>
                         <Link href="/planets" passHref>
-                            <ListItemButton>
+                            <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                                 <ListItemIcon>
                                     <NightlightRoundIcon />
                                 </ListItemIcon>
@@ -72,24 +84,24 @@ export default function Menu() {
                     </ListItem>
                     <ListItem key={"即時中西星圖"} disablePadding>
                         <Link href="/skymap" passHref>
-                            <ListItemButton>
+                            <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                                 <ListItemIcon>
                                     <AutoAwesomeIcon />
                                 </ListItemIcon>
-                            <ListItemText primary="Inbox" />
+                            <ListItemText primary="即時中西星圖" />
                             </ListItemButton>
                         </Link>
                     </ListItem>
                 </List>
                 <Divider />
                 <List>
-                    <ListItem key={"關於此網頁"} disablePadding>
+                    <ListItem key={"關於"} disablePadding>
                         <Link href="/about" passHref>
-                            <ListItemButton>
+                            <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                                 <ListItemIcon>
                                     <InfoIcon />
                                 </ListItemIcon>
-                            <ListItemText primary="關於此網頁" />
+                            <ListItemText primary="關於" />
                             </ListItemButton>
                         </Link>
                     </ListItem>
