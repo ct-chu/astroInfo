@@ -256,7 +256,7 @@ const DrawPole = () => {
       {/* cross in centre */}
       <Line stroke="#555" points={[150, 140, 150, 160]} />
       <Line stroke="#555" points={[140, 150, 160, 150]} />
-      <Text x={130} y={180} fontSize={20} fill='#FFF' align="center" text="NCP"/>
+      <Text x={130} y={165} fontSize={20} fill='#FFF' align="center" text="NCP"/>
       {/* polaris */}
       <Star numPoints={5} innerRadius={4} outerRadius={8} x={polX} y={polY} fill="#FFF"/>
       {/* Inversion */}
