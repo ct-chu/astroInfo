@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Box, Card, Grid, Typography } from "@mui/material";
+import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
 
 export default function About() {
@@ -14,6 +14,26 @@ export default function About() {
       sx={{ position: "fixed", top: "7%", bottom: 0 }}
     >
       <Grid item sx={{ width: 0.9 }}>
+        <Box sx={{ height: "2rem" }} />
+        <Grid
+          container
+          sx={{ width: 0.9 }}
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid item xs={1}>
+            <CardMedia component={"img"} src={"/SSY_white.png"} />
+          </Grid>
+          <Grid item xs={1}>
+            <CardMedia
+              component={"img"}
+              sx={{ width: 0.8 }}
+              src={"/HK_white.png"}
+            />
+          </Grid>
+          <Grid item xs={9}></Grid>
+        </Grid>
         <Box sx={{ height: "2rem" }} />
         <Grid sx={{ width: 0.9 }}>
           <Typography variant="sectionTitle">可觀天文資訊 </Typography>
