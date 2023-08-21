@@ -3,26 +3,26 @@
 import { createTheme } from "@mui/material";
 
 const themeDark = createTheme({
-  overrides: {
-    MuiCssBaseline: {
-      "#overlay": {
-        position: "fixed",
-        display: "none",
-        width: 1,
-        height: 1,
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: "rgba(120,0,0,0.5)",
-        zIndex: 2,
-      },
-      background: {
-        default: "#000000",
-        paper: "#000000",
-      },
-    },
-  },
+  // overrides: {
+  //   MuiCssBaseline: {
+  //     "#overlay": {
+  //       position: "fixed",
+  //       display: "none",
+  //       width: 1,
+  //       height: 1,
+  //       top: 0,
+  //       left: 0,
+  //       right: 0,
+  //       bottom: 0,
+  //       backgroundColor: "rgba(120,0,0,0.5)",
+  //       zIndex: 2,
+  //     },
+  //     background: {
+  //       default: "#000000",
+  //       paper: "#000000",
+  //     },
+  //   },
+  // },
   palette: {
     mode: "dark",
     background: {
