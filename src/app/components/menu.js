@@ -30,6 +30,7 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import InfoIcon from "@mui/icons-material/Info";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import StarIcon from '@mui/icons-material/Star';
 
 import ThemeDark from "../styles/themeDark";
 
@@ -112,6 +113,16 @@ export default function Menu() {
                           <AutoAwesomeIcon />
                         </ListItemIcon>
                         <ListItemText primary="即時中西星圖" />
+                      </ListItemButton>
+                    </Link>
+                  </ListItem>
+                  <ListItem key={"北極星"} disablePadding>
+                    <Link href="/pole" passHref>
+                      <ListItemButton onClick={() => setIsDrawerOpen(false)}>
+                        <ListItemIcon>
+                          <StarIcon />
+                        </ListItemIcon>
+                        <ListItemText primary="北極星" />
                       </ListItemButton>
                     </Link>
                   </ListItem>
