@@ -1,11 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
-import { ImageList, ImageListItem, Grid, Typography, Box } from "@mui/material";
-import Lightbox from "yet-another-react-lightbox";
+import { useState, useEffect } from "react";
+import {Grid, Typography, Box, Switch } from "@mui/material";
+import { pink } from "@mui/material/colors";
+import { alpha, styled } from '@mui/material/styles';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 import "yet-another-react-lightbox/styles.css";
-import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import { Stage, Layer, Star, Text, Circle, Line } from 'react-konva';
 
 function calculateLST() {
@@ -194,14 +196,13 @@ const polarisAngle = (last) => {
         hour: 3,
         minute: 1,
         second: 30.27
-    }; //RA of polaris =2h41m39s (J2023.6)
+    }; //RA of polaris =3h1m30.27s (J2023.6)
 
     let hourAngleDeg = (last.hour*3600 + last.minute*60 + last.second - polaris.hour*3600 - polaris.minute*60 - polaris.second)/86164.0905*360;
     
     let angle = 360 - hourAngleDeg;
 
-    (angle > 360) ? (angle = angle%360) : (angle = angle);
-    console.log(angle)
+    (angle > 360) ? (angle = angle%360) : (angle = angle)
 
     return angle
 }
@@ -210,36 +211,67 @@ const DrawPole = () => {
   const last = calculateLST()
   const angle = polarisAngle(last) *0.0174533
   const graphTime = new Date().toLocaleString()
+  const [inversion, setInversion] = useState(false)
+  const [lateralInversion, setLateralInversion] = useState(false)
 
-  let polX = (150 + 110*Math.sin(angle))
-  let polY = (150 - 110*Math.cos(angle))
-  console.log("x " + polX)
-  console.log("y " + polY)
+  // useEffect(() => {
+    
+  // })
+  // const changeInversion = useState(!inversion)
+  // const changeLateralInversion = useState(!lateralInversion)
 
-  return (<Stage width={300} height={300}>
+  let polX = lateralInversion === false ? (150 + 110*Math.sin(angle)) : (-1 * (150 + 110*Math.sin(angle)))
+  let polY = inversion === false ? (150 - 110*Math.cos(angle)) : (-1 * (150 - 110*Math.cos(angle)))
+
+  const PinkSwitch = styled(Switch)(({ theme }) => ({
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: pink[600],
+      '&:hover': {
+        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
+      },
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: pink[600],
+    },
+  }));
+  
+
+  return (
+  <Grid item>
+  <Stage width={300} height={300}>
     <Layer>
+      {/* Graph time */}
+      <Text x={40} y={15} fontSize={13} fill='#555' align="center" text={"Generated at: " + graphTime}/>
       {/* outer circle */}
       <Circle x={150} y={150} radius={110} stroke="#555"/>
       {/* marking on outer circle */}
-      <Line stroke="#555" points={[150, 40, 150, 60]}></Line>
-      <Line stroke="#555" points={[150, 240, 150, 260]}></Line>
-      <Line stroke="#555" points={[40, 150,60, 150]}></Line>
-      <Line stroke="#555" points={[240, 150,260, 150]}></Line>
-      <Line stroke="#555" points={[72.22, 72.22, 86.36, 86.36]}></Line>
-      <Line stroke="#555" points={[213.64, 213.64, 227.78, 227.78]}></Line>
-      <Line stroke="#555" points={[72.22, 227.78, 86.36, 213.64]}></Line>
-      <Line stroke="#555" points={[227.78, 72.22, 213.64, 86.36]}></Line>
+      <Line stroke="#555" points={[150, 40, 150, 60]} />
+      <Line stroke="#555" points={[150, 240, 150, 260]} />
+      <Line stroke="#555" points={[40, 150,60, 150]} />
+      <Line stroke="#555" points={[240, 150,260, 150]} />
+      <Line stroke="#555" points={[72.22, 72.22, 86.36, 86.36]} />
+      <Line stroke="#555" points={[213.64, 213.64, 227.78, 227.78]} />
+      <Line stroke="#555" points={[72.22, 227.78, 86.36, 213.64]} />
+      <Line stroke="#555" points={[227.78, 72.22, 213.64, 86.36]} />
       {/* cross in centre */}
-      <Line stroke="#555" points={[150, 140, 150, 160]}></Line>
-      <Line stroke="#555" points={[140, 150, 160, 150]}></Line>
+      <Line stroke="#555" points={[150, 140, 150, 160]} />
+      <Line stroke="#555" points={[140, 150, 160, 150]} />
       <Text x={130} y={180} fontSize={20} fill='#FFF' align="center" text="NCP"/>
       {/* polaris */}
       <Star numPoints={5} innerRadius={4} outerRadius={8} x={polX} y={polY} fill="#FFF"/>
-      {/* Graph time */}
-      <Text x={40} y={280} fontSize={13} fill='#555' align="center" text={"Generated at: " + graphTime}/>
+      {/* Inversion */}
+      <Text x={110} y={275} fontSize={13} fill='#555' align="center" text={"Correct Image"} />
     </Layer>
-  </Stage>)
-}
+  </Stage>
+  <Box sx={{ height: "1rem" }} />
+  <FormGroup>
+    {/* <FormControlLabel control={<PinkSwitch onChange={() => changeLateralInversion}/>} label="Laterally inverted (LR)?"/>
+    <FormControlLabel control={<PinkSwitch onChange={() => changeInversion}/>} label="Inverte (UD)?"/> */}
+    <FormControlLabel disabled control={<PinkSwitch />} label="Laterally inverted (LR)?"/>
+    <FormControlLabel disabled control={<PinkSwitch />} label="Inverte (UD)?"/>
+  </FormGroup>
+  </Grid>
+)}
 
 export default function Pole() {
 
@@ -261,10 +293,11 @@ export default function Pole() {
             北極星位置 Polaris location
             <br />
           </Typography>
-          <DrawPole />
-        <Box sx={{ height: "2rem" }} />
+          
+        
         </Grid>
-
+      <DrawPole />
+      <Box sx={{ height: "2rem" }} />
 
     </Grid>
   );
