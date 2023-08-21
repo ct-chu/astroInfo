@@ -268,7 +268,7 @@ const DrawPole = () => {
     {/* <FormControlLabel control={<PinkSwitch onChange={() => changeLateralInversion}/>} label="Laterally inverted (LR)?"/>
     <FormControlLabel control={<PinkSwitch onChange={() => changeInversion}/>} label="Inverte (UD)?"/> */}
     <FormControlLabel disabled control={<PinkSwitch />} label="Laterally inverted (LR)?"/>
-    <FormControlLabel disabled control={<PinkSwitch />} label="Inverte (UD)?"/>
+    <FormControlLabel disabled control={<PinkSwitch />} label="Inverted (UD)?"/>
   </FormGroup>
   </Grid>
 )}
