@@ -255,7 +255,7 @@ export default function Pole() {
     >
       <Box sx={{ height: "2rem" }} />
 
-      <Grid item sx={{ width: 0.85 }}>
+      <Grid item>
 
           <Typography variant="sectionTitle">
             北極星位置 Polaris location
