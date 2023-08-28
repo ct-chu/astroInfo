@@ -2,13 +2,16 @@
 
 import * as React from "react";
 import { useState, useEffect } from "react";
-import {Grid, Typography, Box, Switch } from "@mui/material";
+import {Grid, Typography, Box, Button } from "@mui/material";
 import { pink } from "@mui/material/colors";
 import { alpha, styled } from '@mui/material/styles';
+import DoneIcon from '@mui/icons-material/Done';
+import CloseIcon from '@mui/icons-material/Close';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import "yet-another-react-lightbox/styles.css";
 import { Stage, Layer, Star, Text, Circle, Line } from 'react-konva';
+import { IconButton } from "yet-another-react-lightbox";
 
 function calculateLST() {
     const date = new Date();
@@ -213,28 +216,61 @@ const DrawPole = () => {
   const graphTime = new Date().toLocaleString()
   const [inversion, setInversion] = useState(false)
   const [lateralInversion, setLateralInversion] = useState(false)
+  const [polX, setPolX] = useState(0)
+  const [polY, setPolY] = useState(0)
+  const [graphOrient, setGraphOrient] = useState("Correct image")
 
-  // useEffect(() => {
-    
-  // })
-  // const changeInversion = useState(!inversion)
-  // const changeLateralInversion = useState(!lateralInversion)
+  const changeInversion = () => {
+    setInversion(!inversion)
+  }
+  const changeLateralInversion = () => {
+    setLateralInversion(!lateralInversion)
+  }
 
-  let polX = lateralInversion === false ? (150 + 110*Math.sin(angle)) : (-1 * (150 + 110*Math.sin(angle)))
-  let polY = inversion === false ? (150 - 110*Math.cos(angle)) : (-1 * (150 - 110*Math.cos(angle)))
-
-  const PinkSwitch = styled(Switch)(({ theme }) => ({
-    '& .MuiSwitch-switchBase.Mui-checked': {
-      color: pink[600],
-      '&:hover': {
-        backgroundColor: alpha(pink[600], theme.palette.action.hoverOpacity),
-      },
-    },
-    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-      backgroundColor: pink[600],
-    },
-  }));
+  useEffect(() => {
+    if (lateralInversion === false) {
+      setPolX(150 + 110*Math.sin(angle))
+    } else {
+      setPolX(150 - 110*Math.sin(angle))
+    }
+    // console.log("x " + polX)
+    if (inversion === false) {
+      setPolY(150 - 110*Math.cos(angle))
+    } else {
+      setPolY(150 + 110*Math.cos(angle))
+    }
+    // console.log("y " + polY)
+    if ((lateralInversion === true) && (inversion === true)) {
+      setGraphOrient("Inverted and Laterally inverted")
+    } else if ((lateralInversion === true) && (inversion === false)) {
+      setGraphOrient("Laterally inverted")
+    } else if ((lateralInversion === false) && (inversion === true)) {
+      setGraphOrient("Inverted")
+    } else if ((lateralInversion === false) && (inversion === false)) {
+      setGraphOrient("Correct image")
+    }
+  },[inversion, lateralInversion])
   
+  const InvertButton = () => {
+    if (inversion === true) {
+      return(
+        <Button variant="outlined" color="error" size="small" style={{textTransform: "none"}} startIcon={<DoneIcon />} onClick={changeInversion}>Inverted (UD)</Button>
+    )} else {
+      return(
+        <Button variant="outlined" color="error" size="small" style={{textTransform: "none"}} startIcon={<CloseIcon />} onClick={changeInversion}>NOT Inverted (UD)</Button>
+    )}
+    }
+
+    const LateralInvertButton = () => {
+      if (lateralInversion === true) {
+        return(
+          <Button variant="outlined" color="error" size="small" style={{textTransform: "none"}} startIcon={<DoneIcon />} onClick={changeLateralInversion}>Laterally Inverted (LR)</Button>
+      )} else {
+        return(
+          <Button variant="outlined" color="error" size="small" style={{textTransform: "none"}} startIcon={<CloseIcon />} onClick={changeLateralInversion}>NOT Laterally Inverted (LR)</Button>
+      )}
+      }
+    
 
   return (
   <Grid item>
@@ -260,16 +296,12 @@ const DrawPole = () => {
       {/* polaris */}
       <Star numPoints={5} innerRadius={4} outerRadius={8} x={polX} y={polY} fill="#FFF"/>
       {/* Inversion */}
-      <Text x={110} y={275} fontSize={13} fill='#555' align="center" text={"Correct Image"} />
+      <Text y={275} fontSize={13} fill='#555' align="center" text={graphOrient} />
     </Layer>
   </Stage>
   <Box sx={{ height: "1rem" }} />
-  <FormGroup>
-    {/* <FormControlLabel control={<PinkSwitch onChange={() => changeLateralInversion}/>} label="Laterally inverted (LR)?"/>
-    <FormControlLabel control={<PinkSwitch onChange={() => changeInversion}/>} label="Inverte (UD)?"/> */}
-    <FormControlLabel disabled control={<PinkSwitch />} label="Laterally inverted (LR)?"/>
-    <FormControlLabel disabled control={<PinkSwitch />} label="Inverted (UD)?"/>
-  </FormGroup>
+  <InvertButton /> <br />
+  <LateralInvertButton />
   </Grid>
 )}
 
