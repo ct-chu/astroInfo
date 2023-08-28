@@ -4,8 +4,12 @@ import * as React from "react";
 import { Grid, ImageList, ImageListItem, Typography, Box } from "@mui/material";
 
 export default function Sun() {
-  const sunSdoLink =
-    "https://services.swpc.noaa.gov/images/animations/sdo-hmii/latest.jpg";
+  const sunHmi =
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg";
+  const sunAia =
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_0304.jpg";
+  const sunActive =
+    "http://jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png";
 
   return (
     <Grid
@@ -24,16 +28,39 @@ export default function Sun() {
           太陽影像 Solar image
           <br />
         </Typography>
-        <Typography variant="small">
-          Lastest image from HMI, Solar Dynamics Observatory
+        <Typography align="center" variant="small">
+          Lastest images from Solar Dynamics Observatory
           <br />
+          <br />
+        </Typography>
+        <Typography variant="content">
+          HMI<br />
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
-            <img src={sunSdoLink} />
+            <img src={sunHmi} />
+          </ImageListItem>
+        </ImageList>
+        <Box sx={{ height: "2rem" }} />
+        <Typography align="center" variant="content">
+          AIA 304 Å <br />
+        </Typography>
+        <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageListItem>
+            <img src={sunAia} />
+          </ImageListItem>
+        </ImageList>
+        <Box sx={{ height: "2rem" }} />
+        <Typography align="center" variant="content">
+          HMI Active Region Patch<br /><br />
+        </Typography>
+        <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageListItem>
+            <img src={sunActive} />
           </ImageListItem>
         </ImageList>
       </Grid>
+      <Box sx={{ height: "2rem" }} />
     </Grid>
   );
 }
