@@ -14,26 +14,12 @@ export default function About() {
       sx={{ position: "fixed", top: "7%", bottom: 0 }}
     >
       <Grid item sx={{ width: 0.9 }}>
-        <Box sx={{ height: "2rem" }} />
-        <Grid
-          container
-          sx={{ width: 0.9 }}
-          direction="row"
-          justifyContent="space-between"
-          alignItems="center"
-        >
-          <Grid item xs={1}>
-            <CardMedia component={"img"} src={"/SSY_white.png"} />
-          </Grid>
-          <Grid item xs={1}>
-            <CardMedia
+        <Box sx={{ height: "4rem" }} />
+        <CardMedia
               component={"img"}
-              sx={{ width: 0.8 }}
-              src={"/HK_white.png"}
+              sx={{ width: {xs: 0.2, lg: 0.1} }}
+              src={"/apple-icon.png"}
             />
-          </Grid>
-          <Grid item xs={9}></Grid>
-        </Grid>
         <Box sx={{ height: "2rem" }} />
         <Grid sx={{ width: 0.9 }}>
           <Typography variant="sectionTitle">可觀天文資訊 </Typography>
@@ -60,9 +46,29 @@ export default function About() {
             <br />
           </Typography>
           <Typography variant="small">
-            Solar image from Solar Dynamics Observatory, NASA
+            Solar images from Solar Dynamics Observatory, NASA
             <br />
           </Typography>
+        </Grid>
+        <Box sx={{ height: "2rem" }} />
+        <Grid
+          container
+          sx={{ width: {xs: "150%" , sm:0.9} }}
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Grid item xs={1}>
+            <CardMedia component={"img"} src={"/SSY_white.png"} />
+          </Grid>
+          <Grid item xs={1}>
+            <CardMedia
+              component={"img"}
+              sx={{ width: {xs: "140%" , sm:0.8}}}
+              src={"/HK_white.png"}
+            />
+          </Grid>
+          <Grid item xs={9}></Grid>
         </Grid>
         <Box sx={{ height: "20rem" }} />
       </Grid>
