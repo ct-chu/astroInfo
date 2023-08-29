@@ -4,21 +4,20 @@ import { createTheme } from "@mui/material";
 
 let theme = createTheme()
 
-const themeDark = createTheme(theme, {
+const themeRed = createTheme(theme, {
   palette: {
     mode: "dark",
-    primary: {
-      main: "#fff",
-      contrastText: "#fff" //button text white instead of black
-    },
-    secondary: {
-      main: "#222",
-      contrastText: "#fff" //button text white instead of black
-    },
     background: {
       default: "#000000",
       paper: "#000000",
     },
+    primary: {
+        main: "#992222",
+      },
+      secondary: {
+        main: "#200",
+        contrastText: "#fff" //button text white instead of black
+      },
   },
   components: {
     MuiCssBaseline: {
@@ -46,42 +45,41 @@ const themeDark = createTheme(theme, {
     fontFamily: {
       display: "Noto",
       body: "Noto",
-      color: "white",
     },
     button: {
-      fontFamily: {
-        display: "Noto",
-        body: "Noto",
-      },
+        fontFamily: {
+            display: "Noto",
+            body: "Noto",
+          },
       fontSize: "calc(14px + 0.5vw)",
-      color: "white",
+      color: "#cc3d3d",
     },
     menu: {
-      fontFamily: {
-        display: "Noto",
-        body: "Noto",
-      },
-      [theme.breakpoints.between("xs", "md")]: {
-          fontSize: "13 px",
-      },
-      [theme.breakpoints.between("md", "lg")]: {
-          fontSize: "calc(10px + 0.5vw)",
-      },
-      color: "white",
-  },
+        fontFamily: {
+            display: "Noto",
+            body: "Noto",
+          },
+        [theme.breakpoints.between("xs", "md")]: {
+            fontSize: "13 px",
+        },
+        [theme.breakpoints.between("md", "lg")]: {
+            fontSize: "calc(10px + 0.5vw)",
+        },
+        color: "#cc3d3d",
+    },
     sectionTitle: {
       fontSize: "calc(19px + 0.5vw)",
-      color: "white",
+      color: "#cc3d3d",
     },
     content: {
       fontSize: "calc(14px + 0.5vw)",
-      color: "white",
+      color: "#cc3d3d",
     },
     small: {
       fontSize: "calc(12px + 0.5vw)",
-      color: "grey",
+      color: "#882c2c",
     },
   },
 });
 
-export default themeDark;
+export default themeRed;

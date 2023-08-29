@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 
 import { ThemeProvider } from "@mui/material/styles";
@@ -21,7 +21,8 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  Avatar
+  Avatar,
+  Switch
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloudIcon from "@mui/icons-material/Cloud";
@@ -31,16 +32,66 @@ import InfoIcon from "@mui/icons-material/Info";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import StarIcon from '@mui/icons-material/Star';
+import { alpha, styled } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 
-import ThemeDark from "../styles/themeDark";
+import themeRed from "../styles/themeRed";
+import themeDark from "../styles/themeDark";
+import {ThemeSwitchContext} from "./ThemeSwitchContext";
 
 export default function Menu() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const forceUpdate = () => window.location.reload(true);
+  const [checked, setChecked] = useState(false);
+  const [theme, setTheme] = useContext(ThemeSwitchContext)
+
+  const handleToggle = () => {
+    if (theme == themeDark) {
+      setTheme(themeRed)
+      setChecked(true)
+      // context.setSession(themeRed)
+    } else {
+      setTheme(themeDark)
+      setChecked(false)
+      // context.setSession(themeDark)
+    }
+  }
+
+  function ModeSwitch() {
+    
+    const RedSwitch = styled(Switch)(({ theme }) => ({
+      '& .MuiSwitch-switchBase.Mui-checked': {
+        color: red[900],
+        '&:hover': {
+          backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+        },
+      },
+      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+        backgroundColor: red[900],
+      },
+    }));
+
+    return (
+      <ListItem>
+
+        <RedSwitch
+          edge="start"
+          onChange={() => handleToggle()}
+          checked={checked}
+        />
+        <ListItemText primary={
+          <Typography variant="menu">
+            &nbsp; 紅光模式
+          </Typography>
+        }/>
+
+      </ListItem>
+    )
+  }
 
   return (
     <>
-      <ThemeProvider theme={ThemeDark}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
         <div id="overlay"></div>
         <Box sx={{ flexGrow: 1 }}>
@@ -49,7 +100,8 @@ export default function Menu() {
               <IconButton
                 size="large"
                 edge="start"
-                color="inherit"
+                variant="menu"
+                color="primary"
                 aria-label="menu"
                 sx={{ mr: 0 }}
                 onClick={() => setIsDrawerOpen(true)}
@@ -64,12 +116,11 @@ export default function Menu() {
               <Link href="/" passHref>
                 <Avatar variant="rounded" src={"./apple-icon.png"} />
                 </Link>
-              {/* <Button color="inherit" variant="small" >紅光模式</Button> */}
               <Drawer
                 open={isDrawerOpen}
                 PaperProps={{
                   sx: {
-                    backgroundColor: "rgba(30, 30, 30, 0.9)",
+                    backgroundColor: theme == themeDark? "rgba(30, 30, 30, 0.9)" : "rgba(15, 0, 0, 0.9)",
                     color: "rgba(255,255,255,1)",
                   },
                 }}
@@ -80,9 +131,13 @@ export default function Menu() {
                     <Link href="/" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)} sx={{width: 1}}>
                         <ListItemIcon>
-                          <CloudIcon />
+                          <CloudIcon color="primary"/>
                         </ListItemIcon>
-                        <ListItemText primary="天氣" />
+                        <ListItemText primary={
+                          <Typography variant="menu">
+                            天氣
+                          </Typography>
+                        }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -90,9 +145,13 @@ export default function Menu() {
                     <Link href="/sun" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
-                          <WbSunnyIcon />
+                          <WbSunnyIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary="太陽" />
+                        <ListItemText primary={
+                          <Typography variant="menu">
+                            太陽
+                          </Typography>
+                        }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -100,9 +159,13 @@ export default function Menu() {
                     <Link href="/planets" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
-                          <NightlightRoundIcon />
+                          <NightlightRoundIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary="月球與行星" />
+                        <ListItemText primary={
+                          <Typography variant="menu">
+                            月球與行星
+                          </Typography>
+                        }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -110,9 +173,13 @@ export default function Menu() {
                     <Link href="/skymap" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
-                          <AutoAwesomeIcon />
+                          <AutoAwesomeIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary="即時中西星圖" />
+                        <ListItemText primary={
+                          <Typography variant="menu">
+                            即時中西星圖
+                          </Typography>
+                        }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -120,9 +187,13 @@ export default function Menu() {
                     <Link href="/pole" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
-                          <StarIcon />
+                          <StarIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary="北極星" />
+                        <ListItemText primary={
+                          <Typography variant="menu">
+                            北極星
+                          </Typography>
+                        }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -133,12 +204,17 @@ export default function Menu() {
                     <Link href="/about" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
-                          <InfoIcon />
+                          <InfoIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary="關於" />
+                        <ListItemText primary={
+                          <Typography variant="menu">
+                            關於
+                          </Typography>
+                        }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
+                  <ModeSwitch />
                 </List>
               </Drawer>
             </Toolbar>
@@ -153,9 +229,9 @@ export default function Menu() {
             zIndex: 2000,
           }}
         >
-          <Fab variant="extended" onClick={forceUpdate}>
-            <RefreshIcon />
-            Refresh
+          <Fab color="secondary" variant="extended" onClick={forceUpdate}>
+            <RefreshIcon color="primary" />
+            <Typography variant="menu">Refresh</Typography>
           </Fab>
         </Box>
       </ThemeProvider>

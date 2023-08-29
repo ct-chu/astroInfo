@@ -1,17 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {Grid, Typography, Box, Button } from "@mui/material";
-import { pink } from "@mui/material/colors";
-import { alpha, styled } from '@mui/material/styles';
 import DoneIcon from '@mui/icons-material/Done';
 import CloseIcon from '@mui/icons-material/Close';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import "yet-another-react-lightbox/styles.css";
 import { Stage, Layer, Star, Text, Circle, Line } from 'react-konva';
-import { IconButton } from "yet-another-react-lightbox";
+import { ThemeSwitchContext } from "../components/ThemeSwitchContext";
+import themeRed from "../styles/themeRed";
+import themeDark from "../styles/themeDark";
 
 function calculateLST() {
     const date = new Date();
@@ -271,32 +269,36 @@ const DrawPole = () => {
       )}
       }
     
+    const [theme, setTheme] = useContext(ThemeSwitchContext)
+    console.log("theme" + theme)
+    const mainColor = (theme == themeDark) ? '#FFF' : '#F00';
+    const lineColor = (theme == themeDark) ? '#555' : '#500';
 
   return (
   <Grid item>
   <Stage width={300} height={300}>
     <Layer>
       {/* Graph time */}
-      <Text x={40} y={15} fontSize={13} fill='#555' align="center" text={"Generated at: " + graphTime}/>
+      <Text x={40} y={15} fontSize={13} fill={lineColor} align="center" text={"Generated at: " + graphTime}/>
       {/* outer circle */}
-      <Circle x={150} y={150} radius={110} stroke="#555"/>
+      <Circle x={150} y={150} radius={110} stroke={lineColor}/>
       {/* marking on outer circle */}
-      <Line stroke="#555" points={[150, 40, 150, 60]} />
-      <Line stroke="#555" points={[150, 240, 150, 260]} />
-      <Line stroke="#555" points={[40, 150,60, 150]} />
-      <Line stroke="#555" points={[240, 150,260, 150]} />
-      <Line stroke="#555" points={[72.22, 72.22, 86.36, 86.36]} />
-      <Line stroke="#555" points={[213.64, 213.64, 227.78, 227.78]} />
-      <Line stroke="#555" points={[72.22, 227.78, 86.36, 213.64]} />
-      <Line stroke="#555" points={[227.78, 72.22, 213.64, 86.36]} />
+      <Line stroke={lineColor} points={[150, 40, 150, 60]} />
+      <Line stroke={lineColor} points={[150, 240, 150, 260]} />
+      <Line stroke={lineColor} points={[40, 150,60, 150]} />
+      <Line stroke={lineColor} points={[240, 150,260, 150]} />
+      <Line stroke={lineColor} points={[72.22, 72.22, 86.36, 86.36]} />
+      <Line stroke={lineColor} points={[213.64, 213.64, 227.78, 227.78]} />
+      <Line stroke={lineColor} points={[72.22, 227.78, 86.36, 213.64]} />
+      <Line stroke={lineColor} points={[227.78, 72.22, 213.64, 86.36]} />
       {/* cross in centre */}
-      <Line stroke="#555" points={[150, 140, 150, 160]} />
-      <Line stroke="#555" points={[140, 150, 160, 150]} />
-      <Text x={130} y={165} fontSize={20} fill='#FFF' align="center" text="NCP"/>
+      <Line stroke={lineColor} points={[150, 140, 150, 160]} />
+      <Line stroke={lineColor} points={[140, 150, 160, 150]} />
+      <Text x={130} y={165} fontSize={20} fill={mainColor} align="center" text="NCP"/>
       {/* polaris */}
-      <Star numPoints={5} innerRadius={4} outerRadius={8} x={polX} y={polY} fill="#FFF"/>
+      <Star numPoints={5} innerRadius={4} outerRadius={8} x={polX} y={polY} fill={mainColor}/>
       {/* Inversion */}
-      <Text y={275} fontSize={13} fill='#555' align="center" text={graphOrient} />
+      <Text y={275} fontSize={13} fill={lineColor} align="center" text={graphOrient} />
     </Layer>
   </Stage>
   <Box sx={{ height: "1rem" }} />
