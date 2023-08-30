@@ -212,11 +212,11 @@ const DrawPole = () => {
   const last = calculateLST()
   const angle = polarisAngle(last) *0.0174533
   const graphTime = new Date().toLocaleString()
-  const [inversion, setInversion] = useState(false)
-  const [lateralInversion, setLateralInversion] = useState(false)
+  const [inversion, setInversion] = useState(true)
+  const [lateralInversion, setLateralInversion] = useState(true)
   const [polX, setPolX] = useState(0)
   const [polY, setPolY] = useState(0)
-  const [graphOrient, setGraphOrient] = useState("Correct image")
+  const [graphOrient, setGraphOrient] = useState("Inverted and Laterally inverted")
 
   const changeInversion = () => {
     setInversion(!inversion)
@@ -322,17 +322,19 @@ export default function Pole() {
       <Box sx={{ height: "2rem" }} />
 
       <Grid item>
-
-          <Typography variant="sectionTitle">
-            北極星位置 Polaris location
-            <br />
-          </Typography>
-          
-        
+        <Typography variant="sectionTitle">
+          北極星位置 Polaris location
+          <br />
+        </Typography>
         </Grid>
       <DrawPole />
       <Box sx={{ height: "2rem" }} />
-
+      <Grid item sx={{width: 0.8}}>
+        <Typography variant="small">
+          Many polarscopes are both inverted and laterally inverted. Please use the buttons above to adjust for your own scope if necessary.
+          <br />
+        </Typography>
+      </Grid>
     </Grid>
   );
 }
