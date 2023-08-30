@@ -11,7 +11,6 @@ import {
   Box,
   Toolbar,
   Typography,
-  Button,
   Fab,
   IconButton,
   Drawer,
@@ -21,7 +20,6 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  Avatar,
   Switch
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -43,7 +41,19 @@ export default function Menu() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const forceUpdate = () => window.location.reload(true);
   const [checked, setChecked] = useState(false);
+  const [eng, setEng] = useState(false);
   const [theme, setTheme] = useContext(ThemeSwitchContext)
+
+  const menuText = {
+    title: {hk: "可觀天文助理", en: "Ho Koon Astro-info"},
+    weather: {hk: "天氣", en: "Weather"},
+    sun: {hk: "太陽", en: "The Sun"},
+    moon: {hk: "月球與行星", en: "Moon & Planets"},
+    skychart: {hk: "即時中西星圖", en: "Realtime Skymap"},
+    pole: {hk: "北極星", en: "Polaris Location"},
+    about: {hk: "關於", en: "About"},
+    redlight: {hk: "紅光模式", en: "Red-light Mode"}, 
+  }
 
   const handleToggle = () => {
     if (theme == themeDark) {
@@ -55,8 +65,68 @@ export default function Menu() {
     }
   }
 
+  const langToggle = () => {
+    if (eng === false) {
+      setEng(true)
+    } else {
+      setEng(false)
+    }
+  }
+
+  function LangSwitch() {
+    const RedSwitch = styled(Switch)(({ theme }) => ({
+      '& .MuiSwitch-switchBase': {
+        color: "#930",
+        '&:hover': {
+          backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+        },
+        '& + .MuiSwitch-track': {
+          opacity: 1,
+          backgroundColor: "#300",
+        },
+      },
+      '& .MuiSwitch-switchBase.Mui-checked': {
+        color: red[900],
+        '&:hover': {
+          backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
+        },
+      },
+      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+        backgroundColor: "#A00",
+      },
+    }));
+    if (theme == themeDark) {
+      return (
+        <ListItem>
+        <Switch
+          edge="start"
+          onChange={() => langToggle()}
+          checked={eng}
+        />
+        <ListItemText primary={
+          <Typography variant="menu">
+            &nbsp; English
+          </Typography>
+        }/>
+      </ListItem>
+    )} else {
+      return(
+        <ListItem>
+          <RedSwitch
+            edge="start"
+            onChange={() => langToggle()}
+            checked={eng}
+          />
+          <ListItemText primary={
+            <Typography variant="menu">
+              &nbsp; English
+            </Typography>
+          }/>
+        </ListItem>
+  )}}
+
   function ModeSwitch() {
-    
+
     const RedSwitch = styled(Switch)(({ theme }) => ({
       '& .MuiSwitch-switchBase.Mui-checked': {
         color: red[900],
@@ -71,7 +141,6 @@ export default function Menu() {
 
     return (
       <ListItem>
-
         <RedSwitch
           edge="start"
           onChange={() => handleToggle()}
@@ -79,10 +148,9 @@ export default function Menu() {
         />
         <ListItemText primary={
           <Typography variant="menu">
-            &nbsp; 紅光模式
+            &nbsp; {(eng === false)? menuText.redlight.hk : menuText.redlight.en}
           </Typography>
         }/>
-
       </ListItem>
     )
   }
@@ -108,12 +176,8 @@ export default function Menu() {
               </IconButton>
               
               <Typography variant="sectionTitle" component="div" sx={{ flexGrow: 1 }}>
-              
-                可觀天文資訊
+                {(eng === false)? menuText.title.hk : menuText.title.en}
               </Typography>
-              <Link href="/" passHref>
-                <Avatar variant="rounded" src={(theme == themeDark)? "./apple-icon.png" : "../red-icon.png"} />
-                </Link>
               <Drawer
                 open={isDrawerOpen}
                 PaperProps={{
@@ -133,7 +197,7 @@ export default function Menu() {
                         </ListItemIcon>
                         <ListItemText primary={
                           <Typography variant="menu">
-                            天氣
+                            {(eng === false)? menuText.weather.hk : menuText.weather.en}
                           </Typography>
                         }/>
                       </ListItemButton>
@@ -147,7 +211,7 @@ export default function Menu() {
                         </ListItemIcon>
                         <ListItemText primary={
                           <Typography variant="menu">
-                            太陽
+                            {(eng === false)? menuText.sun.hk : menuText.sun.en}
                           </Typography>
                         }/>
                       </ListItemButton>
@@ -161,7 +225,7 @@ export default function Menu() {
                         </ListItemIcon>
                         <ListItemText primary={
                           <Typography variant="menu">
-                            月球與行星
+                            {(eng === false)? menuText.moon.hk : menuText.moon.en}
                           </Typography>
                         }/>
                       </ListItemButton>
@@ -175,7 +239,7 @@ export default function Menu() {
                         </ListItemIcon>
                         <ListItemText primary={
                           <Typography variant="menu">
-                            即時中西星圖
+                            {(eng === false)? menuText.skychart.hk : menuText.skychart.en}
                           </Typography>
                         }/>
                       </ListItemButton>
@@ -189,7 +253,7 @@ export default function Menu() {
                         </ListItemIcon>
                         <ListItemText primary={
                           <Typography variant="menu">
-                            北極星
+                            {(eng === false)? menuText.pole.hk : menuText.pole.en}
                           </Typography>
                         }/>
                       </ListItemButton>
@@ -206,13 +270,14 @@ export default function Menu() {
                         </ListItemIcon>
                         <ListItemText primary={
                           <Typography variant="menu">
-                            關於
+                            {(eng === false)? menuText.about.hk : menuText.about.en}
                           </Typography>
                         }/>
                       </ListItemButton>
                     </Link>
                   </ListItem>
                   <ModeSwitch />
+                  <LangSwitch />
                 </List>
               </Drawer>
             </Toolbar>
