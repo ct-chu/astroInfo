@@ -10,11 +10,11 @@ import LayoutComponent from "./components/layoutComponent";
 const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
 
 export const metadata = {
-  title: "可觀天文資訊",
+  title: "可觀天文助理",
   description: "Realtime info for astronomical observation, provided by HKNEAC",
   manifest: '/manifest.json',
   appleWebApp: {
-    title: '可觀天文',
+    title: '可觀天文助理',
     statusBarStyle: 'black-translucent',
     startupImage: [
       "/cover.jpg",
