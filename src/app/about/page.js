@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Box, CardMedia, Grid, Typography } from "@mui/material";
-import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
+// import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
 
 export default function About() {
   return (
@@ -22,7 +22,8 @@ export default function About() {
             />
         <Box sx={{ height: "2rem" }} />
         <Grid sx={{ width: 0.9 }}>
-          <Typography variant="sectionTitle">可觀天文資訊 </Typography>
+          <Typography variant="sectionTitle">可觀天文助理<br/></Typography>
+          <Typography variant="sectionTitle">Ho Koon Astro-info </Typography>
           <Typography variant="small">
             v0.1
             <br />
@@ -53,7 +54,7 @@ export default function About() {
         <Box sx={{ height: "2rem" }} />
         <Grid
           container
-          sx={{ width: {xs: "150%" , sm:0.9} }}
+          sx={{ width: {xs: "170%" , sm:0.9} }}
           direction="row"
           justifyContent="space-between"
           alignItems="center"
@@ -64,7 +65,7 @@ export default function About() {
           <Grid item xs={1}>
             <CardMedia
               component={"img"}
-              sx={{ width: {xs: "140%" , sm:0.8}}}
+              sx={{ width: {xs: "90%" , sm:0.8}}}
               src={"/HK_white.png"}
             />
           </Grid>
