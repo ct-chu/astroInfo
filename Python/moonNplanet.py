@@ -35,7 +35,7 @@ import gc
 import feedparser
 import re
 import objgraph
-from ftplib import FTP
+import pysftp
 
 ##################
 #memory leak
