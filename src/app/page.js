@@ -14,7 +14,7 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import axios from "axios";
-import ImageFilter from 'react-image-filter';
+import ImageFilter from "react-image-filter";
 import themeDark from "./styles/themeDark";
 import { ThemeSwitchContext } from "./components/ThemeSwitchContext";
 
@@ -24,17 +24,17 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [state, setState] = useState("");
   const [updateTime, setUpdateTime] = useState("");
-  const [theme, setTheme] = useContext(ThemeSwitchContext)
-  const noFilter = []
+  const [theme, setTheme] = useContext(ThemeSwitchContext);
+  const noFilter = [];
   const redFilter = [
-    0.5, 0.3, 0.5, 0, 0,
-    0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0,
-    0, 0, 0, 1, 0,
-  ]
+    0.5, 0.3, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
+  ];
 
-  const hokoonAscLink = (theme == themeDark)? "https://live.staticflickr.com/65535/53122437995_7e97aa9c5a_o_d.png" : "https://live.staticflickr.com/65535/53152185280_1a3dbfc398_o_d.png"; //for testing only
-  
+  const hokoonAscLink =
+    theme == themeDark
+      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_ASC.png"
+      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_ASC_red.png";
+
   const ascList = [
     {
       site: `鶴咀 Cape D'Aguilar`,
@@ -93,37 +93,37 @@ export default function Home() {
   const WeatherCard = () => {
     return (
       <>
-      <Grid
-        container
-        direction="row"
-        alignItems="stretch"
-        justifyContent="space-around"
-        sx={{ width: 1 }}
-      >
-        <Grid item xs={8}>
-          <Typography component="div" variant="content">
-            Air temp: {weatherData[1]} °C
-          </Typography>
-          <Typography component="div" variant="content">
-            Humidity: {weatherData[2]} %
-          </Typography>
-          <Typography component="div" variant="content">
-            UV intensity: {weatherData[3]} <br /> <br />
-          </Typography>
-        </Grid>
-        <Grid item xs={4}>
-          <ImageFilter
+        <Grid
+          container
+          direction="row"
+          alignItems="stretch"
+          justifyContent="space-around"
+          sx={{ width: 1 }}
+        >
+          <Grid item xs={8}>
+            <Typography component="div" variant="content">
+              Air temp: {weatherData[1]} °C
+            </Typography>
+            <Typography component="div" variant="content">
+              Humidity: {weatherData[2]} %
+            </Typography>
+            <Typography component="div" variant="content">
+              UV intensity: {weatherData[3]} <br /> <br />
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <ImageFilter
               image={weatherData[0]}
               style={{ maxWidth: 80 }}
               alt="Current weather"
-              filter =  {(theme == themeDark)? noFilter : redFilter}
+              filter={theme == themeDark ? noFilter : redFilter}
             />
+          </Grid>
         </Grid>
-      </Grid>
-      <Typography component="div" variant="small">
-      Last updated time: {updateTime}
-    </Typography>
-    </>
+        <Typography component="div" variant="small">
+          Last updated time: {updateTime}
+        </Typography>
+      </>
     );
   };
 
@@ -190,7 +190,7 @@ export default function Home() {
                   image={image.url}
                   alt={image.site}
                   loading="lazy"
-                  filter =  {(theme == themeDark)? noFilter : redFilter}
+                  filter={theme == themeDark ? noFilter : redFilter}
                 />
               </ImageListItem>
             ))}

@@ -2,9 +2,7 @@ import "./globals.css";
 import { CssBaseline } from "@mui/material";
 import localFont from "next/font/local";
 
-import themeDark from "./styles/themeDark";
 import Menu from "./components/menu";
-// import { ThemeSwitchContext } from "./components/ThemeSwitchContext";
 import LayoutComponent from "./components/layoutComponent";
 
 const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
@@ -12,20 +10,15 @@ const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
 export const metadata = {
   title: "可觀天文助理",
   description: "Realtime info for astronomical observation, provided by HKNEAC",
-  manifest: '/manifest.json',
+  manifest: "http://hokoon.edu.hk/astroInfo/manifest.json",
   appleWebApp: {
-    title: '可觀天文助理',
-    statusBarStyle: 'black-translucent',
-    startupImage: [
-      "/cover.jpg",
-    ],
+    title: "可觀天文助理",
+    statusBarStyle: "black-translucent",
+    startupImage: ["http://www.hokoon.edu.hk/astroInfo/icons/cover.jpg"],
   },
 };
 
 export default function RootLayout({ children }) {
-
-  // const [theme, setTheme] = useState(themeDark);
-
   return (
     <LayoutComponent>
       <html lang="en">

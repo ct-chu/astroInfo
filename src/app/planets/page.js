@@ -7,10 +7,11 @@ import themeDark from "../styles/themeDark";
 import { ThemeSwitchContext } from "../components/ThemeSwitchContext";
 
 export default function Planets() {
-  const [theme, setTheme] = useContext(ThemeSwitchContext)
-  const planetImgLink = (theme == themeDark)?
-    "https://live.staticflickr.com/65535/53121429242_f313301d18_o_d.png":
-    "https://live.staticflickr.com/65535/53152185275_2139249a3d_o_d.png"; //for testing
+  const [theme, setTheme] = useContext(ThemeSwitchContext);
+  const planetImgLink =
+    theme == themeDark
+      ? "http://hokoon.edu.hk/astroInfo/images/moonNplanet.png"
+      : "http://hokoon.edu.hk/astroInfo/images/moonNplanet_red.png"; //for testing
 
   return (
     <Grid
