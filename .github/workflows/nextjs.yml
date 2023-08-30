@@ -91,7 +91,7 @@ jobs:
     needs: build
     steps:
       - name: Push to branch gh-pages
-        uses: JamesIves/github-pages-deploy-action@4.4.3
+        uses: JamesIves/github-pages-deploy-action@4
         with:
           branch: gh-pages
           folder: out
