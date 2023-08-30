@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Typography,
   Grid,
@@ -14,6 +14,9 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import axios from "axios";
+import ImageFilter from 'react-image-filter';
+import themeDark from "./styles/themeDark";
+import { ThemeSwitchContext } from "./components/ThemeSwitchContext";
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -21,10 +24,17 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [state, setState] = useState("");
   const [updateTime, setUpdateTime] = useState("");
+  const [theme, setTheme] = useContext(ThemeSwitchContext)
+  const noFilter = []
+  const redFilter = [
+    0.5, 0.3, 0.5, 0, 0,
+    0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0,
+    0, 0, 0, 1, 0,
+  ]
 
-  const hokoonAscLink =
-    "https://live.staticflickr.com/65535/53122437995_7e97aa9c5a_o_d.png"; //for testing only
-
+  const hokoonAscLink = (theme == themeDark)? "https://live.staticflickr.com/65535/53122437995_7e97aa9c5a_o_d.png" : "https://live.staticflickr.com/65535/53152185280_1a3dbfc398_o_d.png"; //for testing only
+  
   const ascList = [
     {
       site: `鶴咀 Cape D'Aguilar`,
@@ -102,11 +112,12 @@ export default function Home() {
           </Typography>
         </Grid>
         <Grid item xs={4}>
-          <img
-            style={{ maxWidth: 80 }}
-            src={weatherData[0]}
-            alt="Current weather"
-          />
+          <ImageFilter
+              image={weatherData[0]}
+              style={{ maxWidth: 80 }}
+              alt="Current weather"
+              filter =  {(theme == themeDark)? noFilter : redFilter}
+            />
         </Grid>
       </Grid>
       <Typography component="div" variant="small">
@@ -175,7 +186,12 @@ export default function Home() {
                   <br />
                   <br />
                 </Typography>
-                <img src={image.url} alt={image.site} loading="lazy" />
+                <ImageFilter
+                  image={image.url}
+                  alt={image.site}
+                  loading="lazy"
+                  filter =  {(theme == themeDark)? noFilter : redFilter}
+                />
               </ImageListItem>
             ))}
           </ImageList>

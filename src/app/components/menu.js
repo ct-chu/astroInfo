@@ -49,11 +49,9 @@ export default function Menu() {
     if (theme == themeDark) {
       setTheme(themeRed)
       setChecked(true)
-      // context.setSession(themeRed)
     } else {
       setTheme(themeDark)
       setChecked(false)
-      // context.setSession(themeDark)
     }
   }
 
@@ -114,7 +112,7 @@ export default function Menu() {
                 可觀天文資訊
               </Typography>
               <Link href="/" passHref>
-                <Avatar variant="rounded" src={"./apple-icon.png"} />
+                <Avatar variant="rounded" src={(theme == themeDark)? "./apple-icon.png" : "../red-icon.png"} />
                 </Link>
               <Drawer
                 open={isDrawerOpen}
