@@ -1,14 +1,11 @@
-"use client";
-
 import "./globals.css";
-import { useState } from 'react';
-import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import localFont from "next/font/local";
 
 import themeDark from "./styles/themeDark";
 import Menu from "./components/menu";
-import { ThemeSwitchContext } from "./components/ThemeSwitchContext";
+// import { ThemeSwitchContext } from "./components/ThemeSwitchContext";
+import LayoutComponent from "./components/layoutComponent";
 
 const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
 
@@ -27,11 +24,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 
-  const [theme, setTheme] = useState(themeDark);
+  // const [theme, setTheme] = useState(themeDark);
 
   return (
-    <ThemeSwitchContext.Provider value={[theme, setTheme]}>
-    <ThemeProvider theme={theme}>
+    <LayoutComponent>
       <html lang="en">
         <head>
           <link rel="icon" href="/favicon.ico" />
@@ -55,7 +51,6 @@ export default function RootLayout({ children }) {
           </div>
         </body>
       </html>
-    </ThemeProvider>
-    </ThemeSwitchContext.Provider>
+    </LayoutComponent>
   );
 }
