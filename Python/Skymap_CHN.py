@@ -3006,6 +3006,19 @@ def refresh_sky(i):
     plt.ioff()
     plt.savefig('output/Hokoon_skymap_CHN.png', dpi=150)
 
+    # make red version
+    img = Image.open("output/Hokoon_skymap_CHN.png").convert("RGB")
+    width, height = img.size
+    pixels = img.load()
+    for py in range(height):
+        for px in range(width):
+            r, g, b = img.getpixel((px, py))
+            newR = round(0.3 * r + 0.3 * g + 0.3 *b)
+            newG = 0
+            newB = 0
+            pixels[px, py] = (newR, newG, newB)
+    img.save("output/Hokoon_skymap_CHN_red.png")
+
     #upload to FTP
     ftp=FTP()
     ftp.connect('192.168.1.223',21)
@@ -3013,6 +3026,9 @@ def refresh_sky(i):
     ftp.cwd("/")
 
     with open('output/Hokoon_skymap_CHN.png', 'rb') as file:
+        ftp.storbinary('STOR Hokoon_skymap_CHN.png', file)
+
+    with open('output/Hokoon_skymap_CHN_red.png', 'rb') as file:
         ftp.storbinary('STOR Hokoon_skymap_CHN.png', file)
     
     timelog('ftp upload job done')

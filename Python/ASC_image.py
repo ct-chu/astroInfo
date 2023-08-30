@@ -1168,20 +1168,31 @@ def refresh_sky(i):
     #plt.savefig('Hokoon_ASIM_'+str("{:%Y_%m_%d-%H_%M_%S}".format(datetime.now()))+'.png')
     plt.savefig('output/Hokoon_ASC.png')
     
-    # upload to Dropbox
-    # cfg_path = r'/home/pi/.config/rclone/rclone.conf'
-    # with open(cfg_path) as f:
-    #     cfg = f.read()
-        
-    # ULdropbox = rclone.with_config(cfg).copy('/home/pi/Desktop/Hokoon_ASIM.png','webpage:webpage')
+    # make red version
+    img = Image.open("output/Hokoon_ASC.png").convert("RGB")
+    width, height = img.size
+    pixels = img.load()
+    for py in range(height):
+        for px in range(width):
+            r, g, b = img.getpixel((px, py))
+            newR = round((r+g+b)/3) if ((r+g+b)/3)>90 else round((r+g+b)/3+(r+g)/2.5)
+            newG = 0
+            newB = 0
+            pixels[px, py] = (newR, newG, newB)
+    img.save("output/Hokoon_ASC_red.png")
 
     #upload to FTP
     ftp=FTP()
     ftp.connect('192.168.1.223',21)
     ftp.login('ipcam_user','promoter-merry-litany-validate')
     ftp.cwd("/")
+
     with open('output/Hokoon_ASC.png', 'rb') as file:
         ftp.storbinary('STOR Hokoon_ASC.png', file)
+
+    with open('output/Hokoon_ASC_red.png', 'rb') as file:
+        ftp.storbinary('STOR Hokoon_ASC.png', file)
+
     timelog('ftp upload job done')
     ftp.quit()
 

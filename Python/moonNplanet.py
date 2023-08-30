@@ -824,6 +824,19 @@ def refresh_data(i):
     fig.canvas.flush_events()
     plt.savefig('output/moonNplanet.png', dpi=200, pad_inches=0)
 
+    # make red version
+    img = Image.open("output/moonNplanet.png").convert("RGB")
+    width, height = img.size
+    pixels = img.load()
+    for py in range(height):
+        for px in range(width):
+            r, g, b = img.getpixel((px, py))
+            newR = round((r+g+b)/3.5) if ((r+g+b)/3)>200 else round((r+g+b)/3+(r+g)/2.5)
+            newG = 0
+            newB = 0
+            pixels[px, py] = (newR, newG, newB)
+    img.save("output/moonNplanet_red.png")
+
     #upload to FTP
     ftp=FTP()
     ftp.connect('192.168.1.223',21)
@@ -832,6 +845,9 @@ def refresh_data(i):
 
     with open('output/moonNplanet.png', 'rb') as file:
         ftp.storbinary('STOR moonNplanet.png', file)
+
+    with open('output/moonNplanet_red.png', 'rb') as file:
+        ftp.storbinary('STOR moonNplanet_red.png', file)
     
     timelog('ftp upload job done')
 
