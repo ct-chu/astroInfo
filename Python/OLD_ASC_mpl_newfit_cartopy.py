@@ -1921,7 +1921,7 @@ def refresh_sky(i):
     #upload to FTP
     ftp=FTP()
     ftp.connect('192.168.1.223',21)
-    ftp.login('ipcam_user','promoter-merry-litany-validate')
+    ftp.login('user','pw')
     ftp.cwd("/")
     with open('Hokoon_ASIM.png', 'rb') as file:
         ftp.storbinary('STOR Hokoon_ASIM.png', file)

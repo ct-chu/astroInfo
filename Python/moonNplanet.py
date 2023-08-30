@@ -837,21 +837,18 @@ def refresh_data(i):
             pixels[px, py] = (newR, newG, newB)
     img.save("output/moonNplanet_red.png")
 
-    #upload to FTP
-    ftp=FTP()
-    ftp.connect('192.168.1.223',21)
-    ftp.login('ipcam_user','promoter-merry-litany-validate')
-    ftp.cwd("/")
+    #upload to SFTP
+    userfile = open("id.txt", "r")
+    user = userfile.read()
+    pwfile = open("pw.txt", "r")
+    password = pwfile.read()
+    with pysftp.Connection('192.168.1.223', username=user, password=password) as sftp:
+        sftp.cwd("/var/www/html/astroInfo/images")
+        sftp.put("./output/moonNplanet.png", "./moonNplanet.png")
+        sftp.put( "./output/moonNplanet_red.png", "./moonNplanet_red.png")
+        sftp.close()
 
-    with open('output/moonNplanet.png', 'rb') as file:
-        ftp.storbinary('STOR moonNplanet.png', file)
-
-    with open('output/moonNplanet_red.png', 'rb') as file:
-        ftp.storbinary('STOR moonNplanet_red.png', file)
-    
     timelog('ftp upload job done')
-
-    ftp.quit()
 
     end = time.time()
     timelog(str(round(end-start,2))+'s wasted')

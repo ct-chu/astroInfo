@@ -3019,21 +3019,18 @@ def refresh_sky(i):
             pixels[px, py] = (newR, newG, newB)
     img.save("output/Hokoon_skymap_CHN_red.png")
 
-    #upload to FTP
-    ftp=FTP()
-    ftp.connect('192.168.1.223',21)
-    ftp.login('ipcam_user','promoter-merry-litany-validate')
-    ftp.cwd("/")
+    #upload to SFTP
+    userfile = open("id.txt", "r")
+    user = userfile.read()
+    pwfile = open("pw.txt", "r")
+    password = pwfile.read()
+    with pysftp.Connection('192.168.1.223', username=user, password=password) as sftp:
+        sftp.cwd("/var/www/html/astroInfo/images")
+        sftp.put("./output/Hokoon_skymap_CHN.png", "./Hokoon_skymap_CHN.png")
+        sftp.put( "./output/Hokoon_skymap_CHN_red.png", "./Hokoon_skymap_CHN_red.png")
+        sftp.close()
 
-    with open('output/Hokoon_skymap_CHN.png', 'rb') as file:
-        ftp.storbinary('STOR Hokoon_skymap_CHN.png', file)
-
-    with open('output/Hokoon_skymap_CHN_red.png', 'rb') as file:
-        ftp.storbinary('STOR Hokoon_skymap_CHN.png', file)
-    
     timelog('ftp upload job done')
-
-    ftp.quit()
 
     ########################
     # save and trim record #
