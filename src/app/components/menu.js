@@ -21,7 +21,7 @@ import {
   ListItemIcon,
   ListItemText,
   Divider,
-  Switch
+  Switch,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloudIcon from "@mui/icons-material/Cloud";
@@ -30,122 +30,116 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import InfoIcon from "@mui/icons-material/Info";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import RefreshIcon from "@mui/icons-material/Refresh";
-import StarIcon from '@mui/icons-material/Star';
-import { alpha, styled } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import StarIcon from "@mui/icons-material/Star";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import YouTubeIcon from "@mui/icons-material/YouTube";
+import { alpha, styled } from "@mui/material/styles";
+import { red } from "@mui/material/colors";
 
 import themeRed from "../styles/themeRed";
 import themeDark from "../styles/themeDark";
-import {ThemeSwitchContext} from "./ThemeSwitchContext";
+import { ThemeSwitchContext } from "./ThemeSwitchContext";
 
 export default function Menu() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const forceUpdate = () => window.location.reload(true);
   const [checked, setChecked] = useState(false);
   const [eng, setEng] = useState(false);
-  const [theme, setTheme] = useContext(ThemeSwitchContext)
+  const [theme, setTheme] = useContext(ThemeSwitchContext);
   const cookies = new Cookies();
 
   const menuText = {
-    title: {hk: "可觀天文助理", en: "Ho Koon Astro-info"},
-    weather: {hk: "天氣", en: "Weather"},
-    sun: {hk: "太陽", en: "The Sun"},
-    moon: {hk: "月球與行星", en: "Moon & Planets"},
-    skychart: {hk: "即時中西星圖", en: "Realtime Skymap"},
-    pole: {hk: "北極星", en: "Polaris Location"},
-    about: {hk: "關於", en: "About"},
-    redlight: {hk: "紅光模式", en: "Red-light Mode"}, 
-  }
+    title: { hk: "可觀天文助理", en: "Ho Koon Astro-info" },
+    weather: { hk: "天氣", en: "Weather" },
+    sun: { hk: "太陽", en: "The Sun" },
+    moon: { hk: "月球與行星", en: "Moon & Planets" },
+    skychart: { hk: "即時中西星圖", en: "Realtime Skymap" },
+    pole: { hk: "北極星", en: "Polaris Location" },
+    about: { hk: "關於", en: "About" },
+    redlight: { hk: "紅光模式", en: "Red-light Mode" },
+  };
 
   const handleToggle = () => {
     if (theme == themeDark) {
-      setTheme(themeRed)
+      setTheme(themeRed);
+      setChecked(true);
     } else {
-      setTheme(themeDark)
-      setChecked(false)
+      setTheme(themeDark);
+      setChecked(false);
     }
-  }
+  };
 
   useEffect(() => {
-    if (cookies.get('eng') === false) {
-      setEng(false)
+    if (cookies.get("eng") === false) {
+      setEng(false);
     } else {
-      setEng(true)
+      setEng(true);
     }
-  },[])
-  
+  }, []);
+
   const langToggle = () => {
     if (eng === false) {
-      setEng(true)
-      cookies.set('eng', true, { path: '/' })
+      setEng(true);
+      cookies.set("eng", true, { path: "/" });
     } else {
-      setEng(false)
-      cookies.set('eng', false, { path: '/' })
+      setEng(false);
+      cookies.set("eng", false, { path: "/" });
     }
-  }
+  };
 
   function LangSwitch() {
     const RedSwitch = styled(Switch)(({ theme }) => ({
-      '& .MuiSwitch-switchBase': {
+      "& .MuiSwitch-switchBase": {
         color: "#930",
-        '&:hover': {
+        "&:hover": {
           backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
         },
-        '& + .MuiSwitch-track': {
+        "& + .MuiSwitch-track": {
           opacity: 1,
           backgroundColor: "#300",
         },
       },
-      '& .MuiSwitch-switchBase.Mui-checked': {
+      "& .MuiSwitch-switchBase.Mui-checked": {
         color: red[900],
-        '&:hover': {
+        "&:hover": {
           backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
         },
       },
-      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
         backgroundColor: "#900",
       },
     }));
     if (theme == themeDark) {
       return (
         <ListItem>
-        <Switch
-          edge="start"
-          onChange={() => langToggle()}
-          checked={eng}
-        />
-        <ListItemText primary={
-          <Typography variant="menu">
-            &nbsp; English
-          </Typography>
-        }/>
-      </ListItem>
-    )} else {
-      return(
-        <ListItem>
-          <RedSwitch
-            edge="start"
-            onChange={() => langToggle()}
-            checked={eng}
+          <Switch edge="start" onChange={() => langToggle()} checked={eng} />
+          <ListItemText
+            primary={<Typography variant="menu">&nbsp; English</Typography>}
           />
-          <ListItemText primary={
-            <Typography variant="menu">
-              &nbsp; English
-            </Typography>
-          }/>
         </ListItem>
-  )}}
+      );
+    } else {
+      return (
+        <ListItem>
+          <RedSwitch edge="start" onChange={() => langToggle()} checked={eng} />
+          <ListItemText
+            primary={<Typography variant="menu">&nbsp; English</Typography>}
+          />
+        </ListItem>
+      );
+    }
+  }
 
   function ModeSwitch() {
-
     const RedSwitch = styled(Switch)(({ theme }) => ({
-      '& .MuiSwitch-switchBase.Mui-checked': {
+      "& .MuiSwitch-switchBase.Mui-checked": {
         color: red[900],
-        '&:hover': {
+        "&:hover": {
           backgroundColor: alpha(red[900], theme.palette.action.hoverOpacity),
         },
       },
-      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
         backgroundColor: "#F00",
       },
     }));
@@ -157,13 +151,16 @@ export default function Menu() {
           onChange={() => handleToggle()}
           checked={checked}
         />
-        <ListItemText primary={
-          <Typography variant="menu">
-            &nbsp; {(eng === false)? menuText.redlight.hk : menuText.redlight.en}
-          </Typography>
-        }/>
+        <ListItemText
+          primary={
+            <Typography variant="menu">
+              &nbsp;{" "}
+              {eng === false ? menuText.redlight.hk : menuText.redlight.en}
+            </Typography>
+          }
+        />
       </ListItem>
-    )
+    );
   }
 
   return (
@@ -185,15 +182,37 @@ export default function Menu() {
               >
                 <MenuIcon />
               </IconButton>
-              
-              <Typography variant="sectionTitle" component="div" sx={{ flexGrow: 1 }}>
-                {(eng === false)? menuText.title.hk : menuText.title.en}
+
+              <Typography
+                variant="sectionTitle"
+                component="div"
+                sx={{ flexGrow: 1 }}
+              >
+                {eng === false ? menuText.title.hk : menuText.title.en}
               </Typography>
+              <Link href="https://www.facebook.com/hokoon.astro">
+                <IconButton edge="end" color="primary" sx={{ ml: 0 }}>
+                  <FacebookIcon />
+                </IconButton>
+              </Link>
+              <Link href="https://www.instagram.com/hokoon.astro/">
+                <IconButton edge="end" color="primary" sx={{ ml: 0.5 }}>
+                  <InstagramIcon />
+                </IconButton>
+              </Link>
+              <Link href="https://www.youtube.com/@HokoonChannel">
+                <IconButton edge="end" color="primary" sx={{ ml: 0.5 }}>
+                  <YouTubeIcon />
+                </IconButton>
+              </Link>
               <Drawer
                 open={isDrawerOpen}
                 PaperProps={{
                   sx: {
-                    backgroundColor: theme == themeDark? "rgba(30, 30, 30, 0.9)" : "rgba(15, 0, 0, 0.9)",
+                    backgroundColor:
+                      theme == themeDark
+                        ? "rgba(30, 30, 30, 0.9)"
+                        : "rgba(15, 0, 0, 0.9)",
                     color: "rgba(255,255,255,1)",
                   },
                 }}
@@ -202,15 +221,22 @@ export default function Menu() {
                 <List>
                   <ListItem key={"天氣"} disablePadding>
                     <Link href="/" passHref>
-                      <ListItemButton onClick={() => setIsDrawerOpen(false)} sx={{width: 1}}>
+                      <ListItemButton
+                        onClick={() => setIsDrawerOpen(false)}
+                        sx={{ width: 1 }}
+                      >
                         <ListItemIcon>
-                          <CloudIcon color="primary"/>
+                          <CloudIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary={
-                          <Typography variant="menu">
-                            {(eng === false)? menuText.weather.hk : menuText.weather.en}
-                          </Typography>
-                        }/>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.weather.hk
+                                : menuText.weather.en}
+                            </Typography>
+                          }
+                        />
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -220,11 +246,15 @@ export default function Menu() {
                         <ListItemIcon>
                           <WbSunnyIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary={
-                          <Typography variant="menu">
-                            {(eng === false)? menuText.sun.hk : menuText.sun.en}
-                          </Typography>
-                        }/>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.sun.hk
+                                : menuText.sun.en}
+                            </Typography>
+                          }
+                        />
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -234,11 +264,15 @@ export default function Menu() {
                         <ListItemIcon>
                           <NightlightRoundIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary={
-                          <Typography variant="menu">
-                            {(eng === false)? menuText.moon.hk : menuText.moon.en}
-                          </Typography>
-                        }/>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.moon.hk
+                                : menuText.moon.en}
+                            </Typography>
+                          }
+                        />
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -248,11 +282,15 @@ export default function Menu() {
                         <ListItemIcon>
                           <AutoAwesomeIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary={
-                          <Typography variant="menu">
-                            {(eng === false)? menuText.skychart.hk : menuText.skychart.en}
-                          </Typography>
-                        }/>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.skychart.hk
+                                : menuText.skychart.en}
+                            </Typography>
+                          }
+                        />
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -262,11 +300,15 @@ export default function Menu() {
                         <ListItemIcon>
                           <StarIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary={
-                          <Typography variant="menu">
-                            {(eng === false)? menuText.pole.hk : menuText.pole.en}
-                          </Typography>
-                        }/>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.pole.hk
+                                : menuText.pole.en}
+                            </Typography>
+                          }
+                        />
                       </ListItemButton>
                     </Link>
                   </ListItem>
@@ -279,11 +321,15 @@ export default function Menu() {
                         <ListItemIcon>
                           <InfoIcon color="primary" />
                         </ListItemIcon>
-                        <ListItemText primary={
-                          <Typography variant="menu">
-                            {(eng === false)? menuText.about.hk : menuText.about.en}
-                          </Typography>
-                        }/>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.about.hk
+                                : menuText.about.en}
+                            </Typography>
+                          }
+                        />
                       </ListItemButton>
                     </Link>
                   </ListItem>
