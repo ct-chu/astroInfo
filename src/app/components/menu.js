@@ -64,9 +64,11 @@ export default function Menu() {
     if (theme == themeDark) {
       setTheme(themeRed);
       setChecked(true);
+      cookies.set("red", true, { path: "/" });
     } else {
       setTheme(themeDark);
       setChecked(false);
+      cookies.set("red", false, { path: "/" });
     }
   };
 
@@ -75,6 +77,13 @@ export default function Menu() {
       setEng(false);
     } else {
       setEng(true);
+    }
+    if (cookies.get("red") === false) {
+      setTheme(themeDark);
+      setChecked(false);
+    } else {
+      setTheme(themeRed);
+      setChecked(true);
     }
   }, []);
 
