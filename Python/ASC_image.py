@@ -1182,11 +1182,13 @@ def refresh_sky(i):
     img.save("output/Hokoon_ASC_red.png")
 
     #upload to SFTP
+    cnopts = pysftp.CnOpts()
+    cnopts.hostkeys = None
     userfile = open("id.txt", "r")
     user = userfile.read()
     pwfile = open("pw.txt", "r")
     password = pwfile.read()
-    with pysftp.Connection('192.168.1.223', username=user, password=password) as sftp:
+    with pysftp.Connection('192.168.1.223', username=user, password=password, cnopts=cnopts) as sftp:
         sftp.cwd("/var/www/html/astroInfo/images")
         sftp.put("./output/Hokoon_ASC.png", "./Hokoon_ASC.png")
         sftp.put( "./output/Hokoon_ASC_red.png", "./Hokoon_ASC_red.png")
