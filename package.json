@@ -27,6 +27,7 @@
     "react-konva": "^18.2.10",
     "react-pwa-add-to-homescreen": "^1.1.8",
     "react-router-dom": "^6.15.0",
+    "universal-cookie": "^6.1.0",
     "yet-another-react-lightbox": "^3.12.0"
   }
 }

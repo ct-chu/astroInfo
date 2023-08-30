@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
+import Cookies from "universal-cookie";
 
 import { ThemeProvider } from "@mui/material/styles";
 import {
@@ -43,6 +44,7 @@ export default function Menu() {
   const [checked, setChecked] = useState(false);
   const [eng, setEng] = useState(false);
   const [theme, setTheme] = useContext(ThemeSwitchContext)
+  const cookies = new Cookies();
 
   const menuText = {
     title: {hk: "可觀天文助理", en: "Ho Koon Astro-info"},
@@ -58,18 +60,27 @@ export default function Menu() {
   const handleToggle = () => {
     if (theme == themeDark) {
       setTheme(themeRed)
-      setChecked(true)
     } else {
       setTheme(themeDark)
       setChecked(false)
     }
   }
 
+  useEffect(() => {
+    if (cookies.get('eng') === false) {
+      setEng(false)
+    } else {
+      setEng(true)
+    }
+  },[])
+  
   const langToggle = () => {
     if (eng === false) {
       setEng(true)
+      cookies.set('eng', true, { path: '/' })
     } else {
       setEng(false)
+      cookies.set('eng', false, { path: '/' })
     }
   }
 
@@ -92,7 +103,7 @@ export default function Menu() {
         },
       },
       '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-        backgroundColor: "#A00",
+        backgroundColor: "#900",
       },
     }));
     if (theme == themeDark) {
@@ -135,7 +146,7 @@ export default function Menu() {
         },
       },
       '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-        backgroundColor: red[900],
+        backgroundColor: "#F00",
       },
     }));
 
