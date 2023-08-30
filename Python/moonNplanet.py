@@ -805,6 +805,7 @@ def refresh_data(i):
         ax2.clear()
         ax3.clear()
         ax4.clear()
+        ax5.clear()
         timelog('cleared moon & planet data')
     except:
         timelog('survivor')
