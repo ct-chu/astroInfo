@@ -25,7 +25,7 @@ export default function Home() {
   const [state, setState] = useState("");
   const [updateTime, setUpdateTime] = useState("");
   const [theme, setTheme] = useContext(ThemeSwitchContext);
-  const noFilter = [];
+  const noFilter = [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0,];
   const redFilter = [
     0.5, 0.3, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
   ];
