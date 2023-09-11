@@ -3,7 +3,8 @@
  */
 const nextConfig = {
     output: 'export',
-    webpack: (config) => { config.externals.push({ sharp: 'commonjs sharp', canvas: 'commonjs canvas' }); return config } 
+    webpack: (config) => { config.externals.push({ sharp: 'commonjs sharp', canvas: 'commonjs canvas' }); return config },
+    assetPrefix: process.env.NODE_ENV === "production" ? "http://www.hokoon.edu.hk/astroInfo/" : undefined,
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
     // trailingSlash: true,
