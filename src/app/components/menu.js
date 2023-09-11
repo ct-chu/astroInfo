@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useLayoutEffect } from "react";
 import Link from "next/link";
 import Cookies from "universal-cookie";
 
@@ -72,18 +72,18 @@ export default function Menu() {
     }
   };
 
-  useEffect(() => {
-    if (cookies.get("eng") === false) {
-      setEng(false);
-    } else {
+  useLayoutEffect(() => {
+    if (cookies.get("eng") === true) {
       setEng(true);
-    }
-    if (cookies.get("red") === false) {
-      setTheme(themeDark);
-      setChecked(false);
     } else {
+      setEng(false);
+    }
+    if (cookies.get("red") === true) {
       setTheme(themeRed);
       setChecked(true);
+    } else {
+      setTheme(themeDark);
+      setChecked(false);
     }
   }, []);
 
