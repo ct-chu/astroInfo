@@ -208,6 +208,7 @@ export default function Home() {
           </Button>
           <Box sx={{ height: "2rem" }} />
         </Grid>
+        <Box sx={{ height: "4rem" }} />
       </Grid>
       <Lightbox
         open={open}
