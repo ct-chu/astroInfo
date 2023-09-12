@@ -250,7 +250,7 @@ export default function Menu() {
                     </Link>
                   </ListItem>
                   <ListItem key={"太陽"} disablePadding>
-                    <Link href="./sun" passHref>
+                    <Link href="./sun.html" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
                           <WbSunnyIcon color="primary" />
@@ -268,7 +268,7 @@ export default function Menu() {
                     </Link>
                   </ListItem>
                   <ListItem key={"月球與行星"} disablePadding>
-                    <Link href="./planets" passHref>
+                    <Link href="./planets.html" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
                           <NightlightRoundIcon color="primary" />
@@ -286,7 +286,7 @@ export default function Menu() {
                     </Link>
                   </ListItem>
                   <ListItem key={"即時中西星圖"} disablePadding>
-                    <Link href="./skymap" passHref>
+                    <Link href="./skymap.html" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
                           <AutoAwesomeIcon color="primary" />
@@ -304,7 +304,7 @@ export default function Menu() {
                     </Link>
                   </ListItem>
                   <ListItem key={"北極星"} disablePadding>
-                    <Link href="./pole" passHref>
+                    <Link href="./pole.html" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
                           <StarIcon color="primary" />
@@ -325,7 +325,7 @@ export default function Menu() {
                 <Divider />
                 <List>
                   <ListItem key={"關於"} disablePadding>
-                    <Link href="./about" passHref>
+                    <Link href="./about.html" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                         <ListItemIcon>
                           <InfoIcon color="primary" />
