@@ -10,11 +10,11 @@ const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
 export const metadata = {
   title: "可觀天文助理",
   description: "Realtime info for astronomical observation, provided by HKNEAC",
-  manifest: "http://www.hokoon.edu.hk/astroInfo/manifest.json",
+  manifest: "http://hokoon.edu.hk/astroInfo/manifest.json",
   appleWebApp: {
     title: "可觀天文助理",
     statusBarStyle: "black-translucent",
-    startupImage: ["http://www.hokoon.edu.hk/astroInfo/icons/cover.jpg"],
+    startupImage: ["http://hokoon.edu.hk/astroInfo/icons/cover.jpg"],
   },
 };
 
@@ -23,12 +23,12 @@ export default function RootLayout({ children }) {
     <LayoutComponent>
       <html lang="en">
         <head>
-          <link rel="icon" href="http://www.hokoon.edu.hk/astroInfo/favicon.ico" />
+          <link rel="icon" href="http://www.hokoon.edu.hk/astroInfo/favicon.ico" sizes="any"/>
           <link
             rel="apple-touch-icon"
-            href="http://www.hokoon.edu.hk/astroInfo/apple-icon?<generated>"
-            type="image/<generated>"
-            sizes="<generated>"
+            href="/apple-icon.png"
+            type="image"
+            sizes="any"
           />
         </head>
         <body className={NotoSanstc_R.className}>
