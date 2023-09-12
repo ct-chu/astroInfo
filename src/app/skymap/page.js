@@ -74,7 +74,7 @@ export default function Skymap() {
             />
           </ImageListItem>
         </ImageList>
-        <Box sx={{ height: "2rem" }} />
+        <Box sx={{ height: "6rem" }} />
       </Grid>
 
       <Lightbox

@@ -301,8 +301,9 @@ const DrawPole = () => {
       <Text y={275} fontSize={13} fill={lineColor} align="center" text={graphOrient} />
     </Layer>
   </Stage>
-  <Box sx={{ height: "1rem" }} />
+  <Box sx={{ height: "0.2rem" }} />
   <InvertButton /> <br />
+  <Box sx={{ height: "0.5rem" }} />
   <LateralInvertButton />
   </Grid>
 )}
@@ -335,6 +336,7 @@ export default function Pole() {
           <br />
         </Typography>
       </Grid>
+      <Box sx={{ height: "5rem" }} />
     </Grid>
   );
 }

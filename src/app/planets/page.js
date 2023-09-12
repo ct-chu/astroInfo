@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useContext, useState } from "react";
-import { ImageList, ImageListItem, Grid } from "@mui/material";
+import { ImageList, ImageListItem, Grid, Box } from "@mui/material";
 import themeDark from "../styles/themeDark";
 import { ThemeSwitchContext } from "../components/ThemeSwitchContext";
 
@@ -31,6 +31,7 @@ export default function Planets() {
           </ImageListItem>
         </ImageList>
       </Grid>
+      <Box sx={{ height: "6rem" }} />
     </Grid>
   );
 }
