@@ -2,7 +2,7 @@
   "name":"可觀天文助理",
   "short_name":"可觀天文",
   "theme_color":"#ffffff",
-  "background_color":"fff#fff",
+  "background_color":"#ffffff",
   "display":"fullScreen",
   "scope":"http://hokoon.edu.hk/astroInfo/",
   "start_url":"http://hokoon.edu.hk/astroInfo/",
