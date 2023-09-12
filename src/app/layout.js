@@ -23,12 +23,18 @@ export default function RootLayout({ children }) {
     <LayoutComponent>
       <html lang="en">
         <head>
-          <link rel="icon" href="http://www.hokoon.edu.hk/astroInfo/favicon.ico" sizes="any"/>
+          <link rel="icon" href="/icons/favicon.ico" sizes="any"/>
           <link
             rel="apple-touch-icon"
-            href="/apple-icon.png"
+            href="/icons/apple-icon.png"
             type="image"
             sizes="any"
+          />
+          <link
+            rel="icon"
+            href="/icons/icon?<generated>"
+            type="image/<generated>"
+            sizes="<generated>"
           />
         </head>
         <body className={NotoSanstc_R.className}>
