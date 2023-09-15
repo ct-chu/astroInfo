@@ -46,7 +46,7 @@ export default function About() {
             <br />
           </Typography>
           <Typography variant="small">
-            Emphemeris by Skyfield (ascl:1907.024)
+            Emphemeris by Skyfield (ascl:1907.024, DE421)
             <br />
           </Typography>
           <Typography variant="small">
