@@ -629,7 +629,7 @@ def ephemeris(): #ax4
     set_x = 27
     mag_x = 87.5
     ax4.annotate('出 rise',(rise_x,105),xycoords=('data'),ha='center',va='center',fontproperties=Sans_11,color='white')
-    ax4.annotate('末 set',(set_x,105),xycoords=('data'),ha='center',va='center',fontproperties=Sans_11,color='white')
+    ax4.annotate('沒 set',(set_x,105),xycoords=('data'),ha='center',va='center',fontproperties=Sans_11,color='white')
     ax4.annotate('星等 mag',(mag_x,105),xycoords=('data'),ha='right',va='center',fontproperties=Sans_11,color='white')
     
     # Moon
