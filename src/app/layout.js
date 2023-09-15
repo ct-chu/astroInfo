@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 
 import Menu from "./components/menu";
 import LayoutComponent from "./components/layoutComponent";
+import Script from 'next/script'
 
 const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
 
@@ -22,7 +23,19 @@ export default function RootLayout({ children }) {
   return (
     <LayoutComponent>
       <html lang="en">
-        <head>
+        <head>        
+          <div className="container">
+            <Script src="https://www.googletagmanager.com/gtag/js?id=G-93TZWJBQCF" />
+            <Script id="google-analytics">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+      
+                gtag('config', 'G-93TZWJBQCF');
+              `}
+            </Script>
+          </div>
           <link rel="icon" href="/icons/favicon.ico" sizes="any"/>
           <link
             rel="apple-touch-icon"
