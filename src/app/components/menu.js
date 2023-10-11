@@ -55,7 +55,7 @@ export default function Menu() {
     sun: { hk: "太陽", en: "The Sun" },
     moon: { hk: "月球與行星", en: "Moon & Planets" },
     skychart: { hk: "即時中西星圖", en: "Realtime Skymap" },
-    pole: { hk: "北極星", en: "Polaris Location" },
+    pole: { hk: "極軸鏡", en: "Polarscope" },
     about: { hk: "關於", en: "About" },
     redlight: { hk: "紅光模式", en: "Red-light Mode" },
   };
