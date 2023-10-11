@@ -14,7 +14,7 @@ export const metadata = {
   manifest: "http://hokoon.edu.hk/astroInfo/manifest.json",
   appleWebApp: {
     title: "可觀天文助理",
-    statusBarStyle: "black-translucent",
+    statusBarStyle: "black",
     startupImage: ["http://hokoon.edu.hk/astroInfo/icons/cover.jpg"],
   },
 };
