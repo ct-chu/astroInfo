@@ -204,7 +204,7 @@ export default function Home() {
           </Typography>
           <Button
             variant="outlined"
-            href="https://www.hko.gov.hk/en/gts/astronomy/site_all.htm"
+            href="https://www.hko.gov.hk/tc/gts/astronomy/site_all.htm"
           >
             Go to HKO site
           </Button>
