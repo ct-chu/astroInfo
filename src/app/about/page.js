@@ -40,18 +40,18 @@ export default function About() {
             <br />
           </Typography>
           <Typography variant="small">
+            Unless specified otherwise, emphemeris, skymaps, polarscope, and other information are all calculated for the geographical location of Ho Koon Natural Education cum Astronomical Centre, HONG KONG.
+            <br />
+            <br />
             All-sky images from Ho Koon Nature Education cum Astronomical Centre
             (Sponsored by Sik Sik Yuen), Hong Kong Observatory, and Hong Kong
             Space Muesum
             <br />
-          </Typography>
-          <Typography variant="small">
             Emphemeris by Skyfield (ascl:1907.024, DE421)
             <br />
-          </Typography>
-          <Typography variant="small">
-            Solar images from Solar Dynamics Observatory, NASA
+            Solar images courtesy of NASA/SDO and the AIA, EVE, and HMI science teams.
             <br />
+            Sidereal time, which is used to calculate the location of Polaris, is calculated using a modified version of Samuel Etver&apos;s Sidereal time calculater (https://github.com/samuel-etver/sidereal-time).
           </Typography>
         </Grid>
         <Box sx={{ height: "2rem" }} />
