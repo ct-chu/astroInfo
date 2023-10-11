@@ -30,10 +30,12 @@ export default function Home() {
     0.5, 0.3, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0,
   ];
 
+  const currentTimeStamp = "?" + new Date().getTime();
+
   const hokoonAscLink =
     theme == themeDark
-      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_ASC.png"
-      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_ASC_red.png";
+      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_ASC.png" + currentTimeStamp
+      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_ASC_red.png" + currentTimeStamp;
 
   const ascList = [
     {

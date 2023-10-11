@@ -8,10 +8,11 @@ import { ThemeSwitchContext } from "../components/ThemeSwitchContext";
 
 export default function Planets() {
   const [theme, setTheme] = useContext(ThemeSwitchContext);
+  const currentTimeStamp = "?" + new Date().getTime();
   const planetImgLink =
     theme == themeDark
-      ? "http://hokoon.edu.hk/astroInfo/images/moonNplanet.png"
-      : "http://hokoon.edu.hk/astroInfo/images/moonNplanet_red.png"; //for testing
+      ? "http://hokoon.edu.hk/astroInfo/images/moonNplanet.png" + currentTimeStamp
+      : "http://hokoon.edu.hk/astroInfo/images/moonNplanet_red.png" + currentTimeStamp;
 
   return (
     <Grid

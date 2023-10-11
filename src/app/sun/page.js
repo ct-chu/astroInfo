@@ -8,12 +8,13 @@ import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 export default function Sun() {
-const sunHmi =
-    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg";
+  const currentTimeStamp = "?" + new Date().getTime();
+  const sunHmi =
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg" + currentTimeStamp;
   const sunAia =
-    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_0304.jpg";
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_0304.jpg" + currentTimeStamp;
   const sunActive =
-    "http://jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png";
+    "http://jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png" + currentTimeStamp;
     const [open, setOpen] = useState(false);
   const [lightboxURL, setLightboxURL] = useState(sunHmi);
 

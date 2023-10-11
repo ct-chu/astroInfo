@@ -11,14 +11,15 @@ import { ThemeSwitchContext } from "../components/ThemeSwitchContext";
 
 export default function Skymap() {
   const [theme, setTheme] = useContext(ThemeSwitchContext);
+  const currentTimeStamp = "?" + new Date().getTime();
   const skymapLink =
     theme == themeDark
-      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap.png"
-      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap_red.png";
+      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap.png" + currentTimeStamp
+      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap_red.png" + currentTimeStamp;
   const skymapChnLink =
     theme == themeDark
-      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap_CHN.png"
-      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap_CHN_red.png";
+      ? "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap_CHN.png" + currentTimeStamp
+      : "http://hokoon.edu.hk/astroInfo/images/Hokoon_skymap_CHN_red.png" + currentTimeStamp;
   const [open, setOpen] = useState(false);
   const [lightboxURL, setLightboxURL] = useState(skymapLink);
 
