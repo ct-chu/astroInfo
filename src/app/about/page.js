@@ -77,7 +77,7 @@ export default function About() {
           </Grid>
           <Grid item xs={9}></Grid>
         </Grid>
-        <Box sx={{ height: "20rem" }} />
+        <Box sx={{ height: "8rem" }} />
       </Grid>
 
       {/* <AddToHomeScreen /> */}
