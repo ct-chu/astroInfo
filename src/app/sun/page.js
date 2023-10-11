@@ -36,7 +36,7 @@ export default function Sun() {
           <br />
         </Typography>
         <Typography align="center" variant="small">
-          Lastest images from Solar Dynamics Observatory. Press image to zoom 按圖放大
+          Lastest images from Solar Dynamics Observatory, NASA. Press image to zoom 按圖放大
           <br />
           <br />
         </Typography>
