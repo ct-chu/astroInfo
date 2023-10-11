@@ -11,7 +11,6 @@ export default function About() {
       direction="row"
       justifyContent="center"
       alignItems="center"
-      sx={{ position: "fixed", top: "7%", bottom: 0 }}
     >
       <Grid item sx={{ width: 0.9 }}>
         <Box sx={{ height: "4rem" }} />
