@@ -199,17 +199,17 @@ export default function Menu() {
               >
                 {eng === false ? menuText.title.hk : menuText.title.en}
               </Typography>
-              <Link href="https://www.facebook.com/hokoon.astro">
+              <Link href="https://www.facebook.com/hokoon.astro" target="_blank" rel="noopener noreferrer">
                 <IconButton edge="end" color="primary" sx={{ ml: 0 }}>
                   <FacebookIcon />
                 </IconButton>
               </Link>
-              <Link href="https://www.instagram.com/hokoon.astro/">
+              <Link href="https://www.instagram.com/hokoon.astro/" target="_blank" rel="noopener noreferrer">
                 <IconButton edge="end" color="primary" sx={{ ml: 0.5 }}>
                   <InstagramIcon />
                 </IconButton>
               </Link>
-              <Link href="https://www.youtube.com/@HokoonChannel">
+              <Link href="https://www.youtube.com/@HokoonChannel" target="_blank" rel="noopener noreferrer">
                 <IconButton edge="end" color="primary" sx={{ ml: 0.5 }}>
                   <YouTubeIcon />
                 </IconButton>
