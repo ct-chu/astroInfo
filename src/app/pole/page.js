@@ -324,7 +324,7 @@ export default function Pole() {
 
       <Grid item>
         <Typography variant="sectionTitle">
-          北極星位置 Polaris location
+          極軸鏡 Polarscope
           <br />
         </Typography>
         </Grid>
