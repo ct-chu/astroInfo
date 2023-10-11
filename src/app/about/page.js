@@ -28,7 +28,7 @@ export default function About() {
           </Typography>
           <Typography variant="sectionTitle">Ho Koon Astro-info </Typography>
           <Typography variant="small">
-            v0.1
+            v1.0.0
             <br />
           </Typography>
           <Typography variant="small">
