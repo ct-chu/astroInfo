@@ -31,6 +31,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import RefreshIcon from "@mui/icons-material/Refresh";
 import StarIcon from "@mui/icons-material/Star";
+import HelpIcon from '@mui/icons-material/Help';
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
@@ -57,6 +58,7 @@ export default function Menu() {
     skychart: { hk: "即時中西星圖", en: "Realtime Skymap" },
     pole: { hk: "極軸鏡", en: "Polarscope" },
     about: { hk: "關於", en: "About" },
+    help: { hk: "幫助", en: "Help" },
     redlight: { hk: "紅光模式", en: "Red-light Mode" },
   };
 
@@ -324,6 +326,24 @@ export default function Menu() {
                 </List>
                 <Divider />
                 <List>
+                  <ListItem key={"幫助"} disablePadding>
+                    <Link href="./help.html" passHref>
+                      <ListItemButton onClick={() => setIsDrawerOpen(false)}>
+                        <ListItemIcon>
+                          <HelpIcon color="primary" />
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={
+                            <Typography variant="menu">
+                              {eng === false
+                                ? menuText.help.hk
+                                : menuText.help.en}
+                            </Typography>
+                          }
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </ListItem>
                   <ListItem key={"關於"} disablePadding>
                     <Link href="./about.html" passHref>
                       <ListItemButton onClick={() => setIsDrawerOpen(false)}>
