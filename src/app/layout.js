@@ -17,6 +17,12 @@ export const metadata = {
     statusBarStyle: "black-translucent",
     startupImage: ["http://hokoon.edu.hk/astroInfo/icons/cover.jpg"],
   },
+  viewport: {
+    width: "device-width",
+    initalScale: 1,
+    maximumScale: 1,
+    userScalable: "no",
+  },
 };
 
 export default function RootLayout({ children }) {
