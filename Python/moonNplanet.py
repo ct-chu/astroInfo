@@ -5,7 +5,7 @@ import socket
 import requests
 from bs4 import BeautifulSoup
 import matplotlib
-matplotlib.use('TkAgg')
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import matplotlib.path as mpath
@@ -866,10 +866,14 @@ def refresh_refresh_data(i):
 if platform == 'win32':
     ani = matplotlib.animation.FuncAnimation(fig, refresh_refresh_data, repeat=False, interval=10000, save_count=0)
 else:
-    ani = matplotlib.animation.FuncAnimation(fig, refresh_refresh_data, repeat=False, interval=25000, save_count=0)
+    # ani = matplotlib.animation.FuncAnimation(fig, refresh_refresh_data, repeat=False, interval=25000, save_count=0)
+    while True:
+        i = ""
+        refresh_refresh_data(i)
+        time.sleep(60)
 
 timelog('backend is '+str(matplotlib.get_backend()))
 
-plt.get_current_fig_manager().window.wm_geometry('-5-25')
+# plt.get_current_fig_manager().window.wm_geometry('-5-25')
 
-plt.show()
+# plt.show()
