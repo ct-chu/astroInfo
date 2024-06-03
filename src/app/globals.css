@@ -93,6 +93,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    font-family: "Noto Sans TC", sans-serif;
 }
 
 a {
@@ -104,4 +105,11 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.noto-sans-tc-regular {
+  font-family: "Noto Sans TC", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }

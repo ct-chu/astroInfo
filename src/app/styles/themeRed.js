@@ -43,21 +43,21 @@ const themeRed = createTheme(theme, {
   },
   typography: {
     fontFamily: {
-      display: "Noto",
-      body: "Noto",
+      display: "Noto Sans TC",
+      body: "Noto Sans TC",
     },
     button: {
         fontFamily: {
-            display: "Noto",
-            body: "Noto",
+            display: "Noto Sans TC",
+            body: "Noto Sans TC",
           },
       fontSize: "calc(14px + 0.5vw)",
       color: "#cc3d3d",
     },
     menu: {
         fontFamily: {
-            display: "Noto",
-            body: "Noto",
+            display: "Noto Sans TC",
+            body: "Noto Sans TC",
           },
         [theme.breakpoints.between("xs", "md")]: {
             fontSize: "13 px",

@@ -55,8 +55,9 @@ export default function RootLayout({ children }) {
             type="image/<generated>"
             sizes="<generated>"
           />
+          <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap" rel="stylesheet" />
         </head>
-        <body className={NotoSanstc_R.className}>
+        <body>
           <CssBaseline />
           <Menu />
           <div
