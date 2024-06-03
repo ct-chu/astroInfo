@@ -5,17 +5,18 @@ import localFont from "next/font/local";
 import Menu from "./components/menu";
 import LayoutComponent from "./components/layoutComponent";
 import Script from 'next/script'
+import { prefix } from './prefix.js';
 
-const NotoSanstc_R = localFont({ src: "./pages/NotoSansTC-Regular.otf" });
+const prefixString = `${prefix}`
 
 export const metadata = {
   title: "可觀天文助理",
   description: "Realtime info for astronomical observation, provided by HKNEAC",
-  manifest: "http://hokoon.edu.hk/astroInfo/manifest.json",
+  manifest: `${prefix}/manifest.json`,
   appleWebApp: {
     title: "可觀天文助理",
     statusBarStyle: "black-translucent",
-    startupImage: ["http://hokoon.edu.hk/astroInfo/icons/cover.jpg"],
+    startupImage: [`${prefix}/icons/cover.jpg`],
   },
   viewport: {
     width: "device-width",
@@ -42,16 +43,16 @@ export default function RootLayout({ children }) {
               `}
             </Script>
           </div>
-          <link rel="icon" href="/icons/favicon.ico" sizes="any"/>
+          <link rel="icon" href={`${prefix}/icons/favicon.ico`} sizes="any"/>
           <link
             rel="apple-touch-icon"
-            href="/icons/apple-icon.png"
+            href={`${prefix}/icons/apple-icon.png`}
             type="image"
             sizes="any"
           />
           <link
             rel="icon"
-            href="/icons/icon?<generated>"
+            href={`${prefix}/icons/icon?<generated>`}
             type="image/<generated>"
             sizes="<generated>"
           />

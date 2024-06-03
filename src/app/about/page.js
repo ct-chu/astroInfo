@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { Box, CardMedia, Grid, Typography } from "@mui/material";
+import { prefix } from '../prefix.js';
 // import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
 
 export default function About() {
@@ -17,7 +18,7 @@ export default function About() {
         <CardMedia
           component={"img"}
           sx={{ width: { xs: 0.2, lg: 0.1 } }}
-          src={"http://hokoon.edu.hk/astroInfo/icons/icon-192x192.png"}
+          src={`${prefix}/icons/icon-192x192.png`}
         />
         <Box sx={{ height: "2rem" }} />
         <Grid sx={{ width: 0.9 }}>
@@ -64,14 +65,14 @@ export default function About() {
           <Grid item xs={1}>
             <CardMedia
               component={"img"}
-              src={"http://hokoon.edu.hk/astroInfo/icons/SSY_white.png"}
+              src={`${prefix}/icons/SSY_white.png`}
             />
           </Grid>
           <Grid item xs={1}>
             <CardMedia
               component={"img"}
               sx={{ width: { xs: "90%", sm: 0.8 } }}
-              src={"http://hokoon.edu.hk/astroInfo/icons/HK_white.png"}
+              src={`${prefix}/icons/HK_white.png`}
             />
           </Grid>
           <Grid item xs={9}></Grid>

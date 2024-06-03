@@ -18,6 +18,8 @@ import ImageFilter from "react-image-filter";
 import themeDark from "./styles/themeDark";
 import { ThemeSwitchContext } from "./components/ThemeSwitchContext";
 
+import { prefix } from './prefix.js';
+
 export default function Home() {
   const [open, setOpen] = useState(false);
   const [weatherData, setWeatherData] = useState([]);

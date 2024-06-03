@@ -4,7 +4,7 @@
 const nextConfig = {
     output: 'export',
     webpack: (config) => { config.externals.push({ sharp: 'commonjs sharp', canvas: 'commonjs canvas' }); return config },
-    assetPrefix: process.env.NODE_ENV === "production" ? "http://hokoon.edu.hk/astroInfo/" : undefined,
+    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
     // trailingSlash: true,

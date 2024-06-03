@@ -3,10 +3,12 @@
 import * as React from "react";
 import { Box, Grid, Typography, ImageList, ImageListItem } from "@mui/material";
 
+import { prefix } from '../prefix.js';
+
 export default function About() {
 
-  const iospwaURL = "http://hokoon.edu.hk/astroInfo/ios_pwa.jpg";
-  const androidpwaURL = "http://hokoon.edu.hk/astroInfo/android_pwa.jpg";
+  const iospwaURL = `${prefix}/ios_pwa.jpg`;
+  const androidpwaURL = `${prefix}/android_pwa.jpg`;
 
   return (
     <Grid
