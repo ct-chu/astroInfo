@@ -5,6 +5,8 @@ import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import { prefix } from '../prefix.js';
 // import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
 
+const versionInfo = "v1.0.1 (20240603)"
+
 export default function About() {
   return (
     <Grid
@@ -28,7 +30,7 @@ export default function About() {
           </Typography>
           <Typography variant="sectionTitle">Ho Koon Astro-info </Typography>
           <Typography variant="small">
-            v1.0.0
+            {versionInfo}
             <br />
           </Typography>
           <Typography variant="small">
