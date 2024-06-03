@@ -1,6 +1,5 @@
 import "./globals.css";
 import { CssBaseline } from "@mui/material";
-import localFont from "next/font/local";
 
 import Menu from "./components/menu";
 import LayoutComponent from "./components/layoutComponent";
@@ -10,7 +9,7 @@ import { prefix } from './prefix.js';
 const prefixString = `${prefix}`
 
 export const metadata = {
-  title: "可觀天文助理",
+  title: "可觀天文助理 Astro-info",
   description: "Realtime info for astronomical observation, provided by HKNEAC",
   manifest: `${prefix}/manifest.json`,
   appleWebApp: {
