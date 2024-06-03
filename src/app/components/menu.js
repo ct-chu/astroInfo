@@ -231,7 +231,7 @@ export default function Menu() {
               >
                 <List>
                   <ListItem key={"天氣"} disablePadding>
-                    <Link href="/astroInfo" passHref>
+                    <Link href="./" passHref>
                       <ListItemButton
                         onClick={() => setIsDrawerOpen(false)}
                         sx={{ width: 1 }}
