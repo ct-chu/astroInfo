@@ -13,6 +13,12 @@ export default function Sun() {
     "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg" + currentTimeStamp;
   const sunAia =
     "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_0304.jpg" + currentTimeStamp;
+  const sunC3 = 
+    "https://soho.nascom.nasa.gov/data/realtime/c3/1024/latest.jpg" + currentTimeStamp;
+  const sunC3gif = 
+    "https://soho.nascom.nasa.gov/data/LATEST/current_c3.gif" + currentTimeStamp;
+  const sunMag = 
+    "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIBpfss.jpg" + currentTimeStamp;
   const sunActive =
     "http://jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png" + currentTimeStamp;
     const [open, setOpen] = useState(false);
@@ -60,6 +66,42 @@ export default function Sun() {
             <img src={sunAia} onClick={() => {
                 setOpen(true);
                 setLightboxURL(sunAia);
+              }}/>
+          </ImageListItem>
+        </ImageList>
+        <Box sx={{ height: "2rem" }} />
+        <Typography align="center" variant="content">
+          SOHO LASCO C3 <br />
+        </Typography>
+        <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageListItem>
+            <img src={sunC3} onClick={() => {
+                setOpen(true);
+                setLightboxURL(sunC3);
+              }}/>
+          </ImageListItem>
+        </ImageList>
+        <Box sx={{ height: "2rem" }} />
+        <Typography align="center" variant="content">
+          SOHO LASCO C3 (gif) <br />
+        </Typography>
+        <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageListItem>
+            <img src={sunC3gif} onClick={() => {
+                setOpen(true);
+                setLightboxURL(sunC3gif);
+              }}/>
+          </ImageListItem>
+        </ImageList>
+        <Box sx={{ height: "2rem" }} />
+        <Typography align="center" variant="content">
+          HMI Magnetogram ( with Field Lines) <br />
+        </Typography>
+        <ImageList sx={{ width: 1 }} cols={1} gap={8}>
+          <ImageListItem>
+            <img src={sunMag} onClick={() => {
+                setOpen(true);
+                setLightboxURL(sunMag);
               }}/>
           </ImageListItem>
         </ImageList>
