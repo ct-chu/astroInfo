@@ -1,11 +1,12 @@
 "use client";
 
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Grid, ImageList, ImageListItem, Typography, Box } from "@mui/material";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Cookies from "universal-cookie";
 
 export default function Sun() {
   const currentTimeStamp = "?" + new Date().getTime();
@@ -24,6 +25,40 @@ export default function Sun() {
     const [open, setOpen] = useState(false);
   const [lightboxURL, setLightboxURL] = useState(sunHmi);
 
+  const text = {
+    hk: {
+      title: "太陽影像",
+      zoom: "按圖放大",
+      hmi: "可觀測太陽黑子的最新狀況",
+      aia: "可觀測日珥的最新狀況", 
+      c3: "可觀測日冕、太陽拋出物質的最新狀況", 
+      c3gif: "可觀測日冕、太陽拋出物質的最新狀況（gif動畫，畫面中間的太陽被遮掩）",
+      mag: "可觀測太陽活躍區域和磁場線的最新狀況",
+      active: "可觀測太陽活躍區域和其標示的最新狀況", 
+    },
+    en: {
+      title: "Solar Images",
+      zoom: "Press image to zoom",
+      hmi: "where sunspots could be observed",
+      aia: "where solar prominence could be observed",
+      c3: "where solar corona and mass ejected from the sun could be observed",
+      c3gif: "where solar corona and mass ejected from the sun could be observed (gif animation, the sun in the middle covered)",
+      mag: "where active regions and magnetic field lines of the sun could be observed",
+      active: "where active regions of the sun and relevant markings could be observed",
+    },
+  };
+  const [showText, setShowText] = useState(text.hk)
+
+  const [eng, setEng] = useState(false);
+  const cookies = new Cookies(null, { path: '/' });
+  useEffect(() => {
+    if (cookies.get("eng") === true) {
+      setShowText(text.en);
+    } else {
+      setEng(text.hk);
+    }
+  }, []);
+
   return (
     <Grid
       container
@@ -38,16 +73,22 @@ export default function Sun() {
       <Grid item sx={{ width: 0.85 }}>
         <Box sx={{ height: "2rem" }} />
         <Typography variant="sectionTitle">
-          太陽影像 Solar image
+          {showText.title}
           <br />
         </Typography>
         <Typography align="center" variant="small">
-          Lastest images from Solar Dynamics Observatory, NASA. Press image to zoom 按圖放大
+          {showText.zoom}<br />
+        </Typography>
+        <Typography align="center" variant="small">
+          Lastest images from Solar Dynamics Observatory and Solar and Heliospheric Observatory, NASA.
           <br />
           <br />
         </Typography>
         <Typography variant="content">
           HMI<br />
+        </Typography>
+        <Typography variant="small">
+          {showText.hmi}<br />
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
@@ -61,6 +102,9 @@ export default function Sun() {
         <Typography align="center" variant="content">
           AIA 304 Å <br />
         </Typography>
+        <Typography variant="small">
+          {showText.aia}<br />
+        </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
             <img src={sunAia} onClick={() => {
@@ -69,9 +113,12 @@ export default function Sun() {
               }}/>
           </ImageListItem>
         </ImageList>
-        <Box sx={{ height: "2rem" }} />
+        {/* <Box sx={{ height: "2rem" }} />
         <Typography align="center" variant="content">
           SOHO LASCO C3 <br />
+        </Typography>
+        <Typography variant="small">
+          {showText.c3}<br />
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
@@ -80,10 +127,13 @@ export default function Sun() {
                 setLightboxURL(sunC3);
               }}/>
           </ImageListItem>
-        </ImageList>
+        </ImageList> */}
         <Box sx={{ height: "2rem" }} />
         <Typography align="center" variant="content">
           SOHO LASCO C3 (gif) <br />
+        </Typography>
+        <Typography variant="small">
+          {showText.c3gif}<br />
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
@@ -95,7 +145,10 @@ export default function Sun() {
         </ImageList>
         <Box sx={{ height: "2rem" }} />
         <Typography align="center" variant="content">
-          HMI Magnetogram ( with Field Lines) <br />
+          HMI Magnetogram (with Field Lines) <br />
+        </Typography>
+        <Typography variant="small">
+          {showText.mag}<br />
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
@@ -107,7 +160,10 @@ export default function Sun() {
         </ImageList>
         <Box sx={{ height: "2rem" }} />
         <Typography align="center" variant="content">
-          HMI Active Region Patch<br /><br />
+          HMI Active Region Patch<br />
+        </Typography>
+        <Typography variant="small">
+          {showText.active}<br />
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
