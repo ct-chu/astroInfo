@@ -4,6 +4,7 @@
 const nextConfig = {
     output: 'export',
     webpack: (config) => { config.externals.push({ sharp: 'commonjs sharp', canvas: 'commonjs canvas' }); return config },
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
     assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
    
     // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
