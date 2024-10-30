@@ -48,7 +48,7 @@ export default function Menu() {
   const [checked, setChecked] = useState(false);
   const [eng, setEng] = useState(false);
   const [theme, setTheme] = useContext(ThemeSwitchContext);
-  const cookies = new Cookies();
+  const cookies = new Cookies(null, { path: '/' });
 
   const menuText = {
     title: { hk: "可觀天文助理", en: "Ho Koon Astro-info" },
