@@ -8,7 +8,7 @@ export default function NotFound() {
 
     return (
         <>
-            <h1>404 - Page Not Found</h1>
+            <h1 style={{ color: 'white' }}>404 - Page Not Found</h1>
         </>
     )
 }
