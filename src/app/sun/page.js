@@ -17,7 +17,7 @@ export default function Sun() {
   const sunC3 = 
     "https://soho.nascom.nasa.gov/data/realtime/c3/1024/latest.jpg" + currentTimeStamp;
   const sunC3gif = 
-    "https://soho.nascom.nasa.gov/data/LATEST/current_c3.gif" + currentTimeStamp;
+    "https://soho.nascom.nasa.gov/data/LATEST/current_c3small.gif" + currentTimeStamp;
   const sunMag = 
     "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIBpfss.jpg" + currentTimeStamp;
   const sunActive =
