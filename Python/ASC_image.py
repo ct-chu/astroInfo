@@ -1190,8 +1190,8 @@ def refresh_sky(i):
         html_ss = requests.get(link_ss).text
         soup_ss = BeautifulSoup(html_ss, 'html.parser')
         SW_ss = soup_ss.find_all('table')[1].get_text().split()[-1]
-        f = open("output/sunspot.txt", "w")
-        f.write(SW_ss)
+        f = open("output/sunspot.json", "w")
+        f.write("{ \"ssn\": " + SW_ss + "}")
         f.close()
     except:
         print('silso fail')
@@ -1200,7 +1200,7 @@ def refresh_sky(i):
             html_ss = requests.get(link_ss).text
             soup_ss = BeautifulSoup(html_ss, 'html.parser')
             SW_ss = soup_ss.find_all(class_='solarWindText')[4].get_text().split()[2]
-            f = open("output/sunspot.txt", "w")
+            f = open("output/sunspot.json", "w")
             f.write(SW_ss)
             f.close()
         except:
@@ -1218,7 +1218,7 @@ def refresh_sky(i):
         sftp.cwd("/var/www/html/astroInfo/images")
         sftp.put("./output/Hokoon_ASC.png", "./Hokoon_ASC.png")
         sftp.put( "./output/Hokoon_ASC_red.png", "./Hokoon_ASC_red.png")
-        sftp.put( "./output/sunspot.txt", "./sunspot.txt")
+        sftp.put( "./output/sunspot.json", "./sunspot.json")
         sftp.close()
 
     timelog('ftp upload job done')
