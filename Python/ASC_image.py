@@ -1218,7 +1218,7 @@ def refresh_sky(i):
         sftp.cwd("/var/www/html/astroInfo/images")
         sftp.put("./output/Hokoon_ASC.png", "./Hokoon_ASC.png")
         sftp.put( "./output/Hokoon_ASC_red.png", "./Hokoon_ASC_red.png")
-        sftp.put( "./output/sunspot.json", "./sunspot.json")
+        sftp.put( "./output/sunspot.json", "../sunspot.json")
         sftp.close()
 
     timelog('ftp upload job done')
