@@ -1191,7 +1191,7 @@ def refresh_sky(i):
         soup_ss = BeautifulSoup(html_ss, 'html.parser')
         SW_ss = soup_ss.find_all('table')[1].get_text().split()[-1]
         f = open("output/sunspot.json", "w")
-        f.write("{ \"ssn\": " + SW_ss + "}")
+        f.write("{ \"ssn\" \n: " + SW_ss + "\n}")
         f.close()
     except:
         print('silso fail')
