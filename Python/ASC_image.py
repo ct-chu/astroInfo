@@ -1185,27 +1185,27 @@ def refresh_sky(i):
     #  get sunspot number  #
     ########################
 
-    try:
-        link_ss = 'http://sidc.oma.be/silso/home'
-        html_ss = requests.get(link_ss).text
-        soup_ss = BeautifulSoup(html_ss, 'html.parser')
-        SW_ss = soup_ss.find_all('table')[1].get_text().split()[-1]
-        f = open("output/sunspot.json", "w")
-        f.write("{\n\"ssn\": " + SW_ss + "\n}")
-        f.close()
-    except:
-        print('silso fail')
-        try:
-            link_ss = 'http://spaceweather.com/'
-            html_ss = requests.get(link_ss).text
-            soup_ss = BeautifulSoup(html_ss, 'html.parser')
-            SW_ss = soup_ss.find_all(class_='solarWindText')[4].get_text().split()[2]
-            f = open("output/sunspot.json", "w")
-            f.write(SW_ss)
-            f.close()
-        except:
-            print('spaceweather fail')
-        pass
+    # try:
+    #     link_ss = 'http://sidc.oma.be/silso/home'
+    #     html_ss = requests.get(link_ss).text
+    #     soup_ss = BeautifulSoup(html_ss, 'html.parser')
+    #     SW_ss = soup_ss.find_all('table')[1].get_text().split()[-1]
+    #     f = open("output/sunspot.json", "w")
+    #     f.write("{\n\"ssn\": " + SW_ss + "\n}")
+    #     f.close()
+    # except:
+    #     print('silso fail')
+    #     try:
+    #         link_ss = 'http://spaceweather.com/'
+    #         html_ss = requests.get(link_ss).text
+    #         soup_ss = BeautifulSoup(html_ss, 'html.parser')
+    #         SW_ss = soup_ss.find_all(class_='solarWindText')[4].get_text().split()[2]
+    #         f = open("output/sunspot.json", "w")
+    #         f.write(SW_ss)
+    #         f.close()
+    #     except:
+    #         print('spaceweather fail')
+    #     pass
 
     #upload to SFTP
     cnopts = pysftp.CnOpts()
@@ -1218,7 +1218,7 @@ def refresh_sky(i):
         sftp.cwd("/var/www/html/astroInfo/images")
         sftp.put("./output/Hokoon_ASC.png", "./Hokoon_ASC.png")
         sftp.put( "./output/Hokoon_ASC_red.png", "./Hokoon_ASC_red.png")
-        sftp.put( "./output/sunspot.json", "../sunspot.json")
+        # sftp.put( "./output/sunspot.json", "../sunspot.json")
         sftp.close()
 
     timelog('ftp upload job done')
