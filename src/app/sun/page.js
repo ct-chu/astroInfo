@@ -28,6 +28,7 @@ export default function Sun() {
     "http://jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png" + currentTimeStamp;
     const [open, setOpen] = useState(false);
   const [lightboxURL, setLightboxURL] = useState(sunHmi);
+  const [sunspotno, setSunspotno] = useState('N/A');
 
   const text = {
     hk: {
@@ -63,6 +64,33 @@ export default function Sun() {
     }
   }, []);
 
+  // const GetSunspotNo = () => {
+  //   fetch("http://hokoon.edu.hk/astroInfo/sunspot.json" + currentTimeStamp, {mode: 'cors'})
+  //     .then((res) => res.json())
+  //     .then((json) => {
+  //       var ssn = JSON.stringify(json.ssn)
+  //       console.log("t= " + json.ssn)
+  //       setSunspotno(String(ssn))
+  //       console.log("v= " +  sunspotno)
+  //     })
+  //     .catch((e) => console.error(e));
+  //   // fetch("http://hokoon.edu.hk/astroInfo/images/sunspot.html" + currentTimeStamp , {mode: 'cors'})
+  //   //   .then((res) => res.text())
+  //   //   .then((text) => {
+  //   //     var ssn = String(text)
+  //   //     console.log("t= " + ssn)
+  //   //     setSunspotno(ssn)
+  //   //     console.log("v= " +  sunspotno)
+  //   //   })
+  //   return (
+  //     <>
+  //       <Typography variant="sectionTitle">
+  //       Provisional Sunspot Number: {sunspotno}<br />
+  //       </Typography>
+  //       <Box sx={{ height: "1rem" }} />
+  //     </>
+  //   )}
+
   return (
     <Grid
       container
@@ -76,6 +104,7 @@ export default function Sun() {
     >
       <Grid item sx={{ width: 0.85 }}>
         <Box sx={{ height: "2rem" }} />
+        {/* <GetSunspotNo /> */}
         <Typography variant="sectionTitle">
           {showText.title}
           <br />
