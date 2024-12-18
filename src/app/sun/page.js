@@ -13,7 +13,7 @@ export default function Sun() {
   const sunHmi =
     "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg" + currentTimeStamp;
   const sunNSO =
-    "https://nso1.b-cdn.net/latest/gong_current_int.lr.jpg" + currentTimeStamp;
+    "https://www.spaceweatherlive.com/images/SDO/SDO_HMIIF_512.jpg" + currentTimeStamp;
   const sunSUVI =
     "https://services.swpc.noaa.gov/images/animations/suvi/primary/304/latest.png" + currentTimeStamp;
   const sunAia =
