@@ -5,7 +5,7 @@ import { Box, CardMedia, Grid, Typography } from "@mui/material";
 import { prefix } from '../prefix.js';
 // import { AddToHomeScreen } from "react-pwa-add-to-homescreen";
 
-const versionInfo = "v1.1.1 (20241218)"
+const versionInfo = "v1.1.2 (20250203)"
 
 export default function About() {
   return (

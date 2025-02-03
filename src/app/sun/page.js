@@ -12,8 +12,6 @@ export default function Sun() {
   const currentTimeStamp = "?" + new Date().getTime();
   const sunHmi =
     "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg" + currentTimeStamp;
-  const sunNSO =
-    "https://www.spaceweatherlive.com/images/SDO/SDO_HMIIF_512.jpg" + currentTimeStamp;
   const sunSUVI =
     "https://services.swpc.noaa.gov/images/animations/suvi/primary/304/latest.png" + currentTimeStamp;
   const sunAia =
@@ -112,11 +110,6 @@ export default function Sun() {
         <Typography align="center" variant="small">
           {showText.zoom}<br />
         </Typography>
-        <Typography align="center" variant="small">
-          Lastest images from Solar Dynamics Observatory and Solar and Heliospheric Observatory, NASA. *
-          <br />
-          <br />
-        </Typography>
         <Typography variant="content">
           {/* HMI<br /> */}
           National Solar Observatory<br />
@@ -126,13 +119,9 @@ export default function Sun() {
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
-            {/* <img src={sunHmi} onClick={() => {
+            <img src={sunHmi} onClick={() => {
                 setOpen(true);
                 setLightboxURL(sunHmi);
-              }}/> */}
-            <img src={sunNSO} onClick={() => {
-                setOpen(true);
-                setLightboxURL(sunNSO);
               }}/>
           </ImageListItem>
         </ImageList>
@@ -146,13 +135,9 @@ export default function Sun() {
         </Typography>
         <ImageList sx={{ width: 1 }} cols={1} gap={8}>
           <ImageListItem>
-            {/* <img src={sunAia} onClick={() => {
+            <img src={sunAia} onClick={() => {
                 setOpen(true);
                 setLightboxURL(sunAia);
-              }}/> */}
-            <img src={sunSUVI} onClick={() => {
-                setOpen(true);
-                setLightboxURL(sunSUVI);
               }}/>
           </ImageListItem>
         </ImageList>
@@ -186,7 +171,7 @@ export default function Sun() {
               }}/>
           </ImageListItem>
         </ImageList>
-        {/* <Box sx={{ height: "2rem" }} />
+        <Box sx={{ height: "2rem" }} />
         <Typography align="center" variant="content">
           HMI Magnetogram (with Field Lines) <br />
         </Typography>
@@ -215,7 +200,13 @@ export default function Sun() {
                 setLightboxURL(sunActive);
               }}/>
           </ImageListItem>
-        </ImageList> */}
+        </ImageList>
+        <Box sx={{ height: "2rem" }} />
+        <Typography align="center" variant="small">
+          Lastest images from Solar Dynamics Observatory and Solar and Heliospheric Observatory, NASA.
+          <br />
+          <br />
+        </Typography>
       </Grid>
       <Box sx={{ height: "2rem" }} />
       <Lightbox
@@ -232,11 +223,6 @@ export default function Sun() {
           buttonNext: () => null,
         }}
       />
-      <Typography align="center" variant="small">
-      (*update: images from SDO are temporarily replaced with images from other sources, including the National Solar Observatory, and GOES-R (NASA) due to SDO&apos;s server outage from 26 NOV 2024)
-          <br />
-          <br />
-      </Typography>
       <Box sx={{ height: "5rem" }} />
     </Grid>
   );
