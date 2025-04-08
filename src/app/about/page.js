@@ -59,21 +59,24 @@ export default function About() {
         <Box sx={{ height: "2rem" }} />
         <Grid
           container
-          sx={{ width: { xs: "170%", sm: 0.9 } }}
+          sx={{
+            width: { xs: "170%", sm: 0.9 },
+            justifyContent:"flex-start",
+            alignItems:"stretch",
+          }}
           direction="row"
-          justifyContent="space-between"
-          alignItems="center"
         >
-          <Grid item xs={1}>
+          <Grid item sx={{ width: {xs:"15%"}}}>
             <CardMedia
               component={"img"}
+              sx={{ width: { xs: "60%", lg: "60%" } }}
               src={`${prefix}/icons/SSY_white.png`}
             />
           </Grid>
-          <Grid item xs={1}>
+          <Grid item sx={{ width: {xs:"15%"} }}>
             <CardMedia
               component={"img"}
-              sx={{ width: { xs: "90%", sm: 0.8 } }}
+              sx={{ width: { xs: 0.4, sm: 0.5 }}}
               src={`${prefix}/icons/HK_white.png`}
             />
           </Grid>
