@@ -23,7 +23,7 @@ export default function Sun() {
   const sunMag = 
     "https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIBpfss.jpg" + currentTimeStamp;
   const sunActive =
-    "http://jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png" + currentTimeStamp;
+    "https://wsrv.nl/?url=jsoc.stanford.edu/doc/data/hmi/harp/harp_nrt/latest_nrt.png" + currentTimeStamp;
     const [open, setOpen] = useState(false);
   const [lightboxURL, setLightboxURL] = useState(sunHmi);
   const [sunspotno, setSunspotno] = useState('N/A');
