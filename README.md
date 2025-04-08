@@ -3,6 +3,7 @@ A website providing handy information for astronomical observation, including we
 ## Backend python scripts
 Inside [/Python](/Python) are scripts generating All-sky, skymap, and emphemeris images.  
 Old scripts from Thomas are marked with the prefix "OLD_".  
+Use python 3.8.9
 
 ## Static website for better mobile readability
 See [README_nextjs.md](/README_nextjs.md) for detail.  
